@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+
+// props から slug を取得
+const { slug } = Astro.params;
+
+// blog コレクションから該当記事を探す
+const posts = await getCollection('blog');
+const post = posts.find((p) => p.slug === slug);
+
+if (!post) {
+  throw new Error(`Post not found for slug: ${slug}`);
+}
+
+// Markdown を HTML に変換
+const { Content } = await post.render();
+
+// ★ 動的ルート用：全ての slug を返す
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+  }));
+}
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{post.data.title}</title>
+    <meta name="description" content={post.data.description} />
+  </head>
+  <body>
+    <article>
+      <h1>{post.data.title}</h1>
+      <p><em>{post.data.date}</em></p>
+      <div>
+        <!-- Markdown が HTML に変換されて表示される -->
+        <Content />
+      </div>
+    </article>
+  </body>
+</html>

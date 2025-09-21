@@ -1,0 +1,46 @@
+---
+const { title, date, description, slug } = Astro.props;
+---
+
+<a href={"/blog/" + slug + "/"}>
+  <article class="card">
+    <h2>
+      {title}
+    </h2>
+    <p class="date">{date}</p>
+    <p class="desc">{description}</p>
+  </article>
+</a>
+
+<style>
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 12px;
+  max-width: 400px;
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin: 0 0 8px 0;
+}
+
+.card .date {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.card .desc {
+  color: #444;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+</style>
