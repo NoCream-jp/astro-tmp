@@ -1,11 +1,55 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import PostCard from '@/components/PostCard.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// blog コレクションを取得
+const posts = await getCollection("blog");
+
+// 日付順で降順にソート（最新記事が上）
+posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: string | number | Date; }; }) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="ja">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+        <link rel="stylesheet" href="/styles/index.css">
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="header-container">
+                <div class="site">
+                    <a href=""></a>
+                </div>
+            </div>
+            <h1>Welcome to my space</h1>
+        </header>
+
+        <main>
+            <section>
+                <h2>写真載せたいね</h2>
+                <p>
+                    <a href="/memories">お店，料理の写真はこちら</a>
+                </p>
+            </section>
+
+            <section>
+                <h2>記事一覧</h2>
+                <div class="grid">
+                    {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
+                        <PostCard
+                            title={post.data.title}
+                            date={post.data.date}
+                            description={post.data.description}
+                            slug={post.slug}
+                            thumbnail={post.data.thumbnail}
+                        />
+                    ))}
+                </div>
+            </section>
+
+        </main>
+    </body>
+</html>

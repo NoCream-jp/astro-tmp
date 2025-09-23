@@ -1,0 +1,46 @@
+/* src/styles/index.css */
+
+body {
+    background-color: #f9f9f9;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+/* グリッドレイアウト：記事カード用 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+/* リンク付き写真セクション */
+section h2 {
+    color: #444;
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    margin-top: 40px;
+}
+
+section p a {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #f5a623;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+section p a:hover {
+    background-color: #d48806;
+}
+
+/* PostCard 自体のスタイルは PostCard.astro 内で管理 */
