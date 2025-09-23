@@ -12,7 +12,7 @@ body {
 
 .footer {
     background-color: #ffffff;
-    color: #707070;
+    color: #000000;
     font-size: 20px;
     padding: 70px 0;
     text-align: center;
@@ -59,7 +59,7 @@ body {
     place-items: center;
     width: 36px;
     aspect-ratio: 1 / 1;
-    background-color: #827474;
+    background-color: #000000;
     color: #ffffff;
     clip-path: circle(50%);
     text-decoration: none;
@@ -86,7 +86,7 @@ body {
     }
 }
 
-.grid {
+.posts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 16px;
@@ -105,7 +105,11 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .header {
     background-color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     height: 112px;
+    position: relative;
+    z-index: 2;
 }
 
 .header-container {
@@ -121,11 +125,26 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 
-.hero {
+/* .hero {
     background-image: url("/images/heroimg.jpeg");
     background-position: center;
     background-size: cover;
     height: 663px;
+} */
+
+.hero {
+    align-items: center;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -112px;
+    min-height: 100vh;
+    padding-top: 112px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
 }
 
 /* .hero h1 {
@@ -133,14 +152,14 @@ h1, h2, h3, h4, h5, h6, p, ul {
 } */
 
 .hero-container {
-    align-items: flex-start;
     display: flex;
+    /*align-items: flex-start;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
     margin-top: auto;
     margin-bottom: auto;
-    position: relative;
+    position: relative; */
 }
 
 .hero .cursive {
@@ -149,7 +168,7 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .hero-container .sentence { /* 左上に */
     align-self: flex-start;
-    color: #ffffff;
+    color: #c0ffee;
     text-shadow: 2px 2px 4px #000000;
 }
 
@@ -172,10 +191,9 @@ img {
 .navbtn {
     background: transparent;
     border: none;
-    color: #7c5738;
+    color: black;
     cursor: pointer;
     font-size: 30px;
-    outline: none;
     padding: 25px;
 }
 

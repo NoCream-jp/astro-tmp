@@ -13,31 +13,71 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
     
     <head>
         <meta charset="UTF-8">
-        <title>title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DripNotes</title>
         <link rel="stylesheet" href="/styles/index.css">
+        <!-- ほかのフォント -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+        <!-- DancingScript -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+        <!-- Noto Sans JP -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <header class="header">
-            <div class="header-container">
+            <div class="header-container w-container">
                 <div class="site">
-                    <a href=""></a>
+                    <a href="index.html">
+                        <img class="logo"
+                            src="/images/header_icon.png"
+                            alt="header_icon"
+                            width="50" height="50">
+                    </a>
                 </div>
+                <div class="site">
+                    <a href="index.html" class="cursive">
+                        Drip-Notes
+                    </a>
+                </div>
+    <!--
+                <div class="header-setence">
+                    日常ブログ
+                </div>
+                -->
+                <button class="navbtn">
+                    <i class="fas fa-bars"></i>
+                    <span class="sr-only">MENU</span>
+                </button>
             </div>
-            <h1>Welcome to my space</h1>
         </header>
 
+        <section class="hero">
+            <div class="hero-container w-container">
+                <h1>
+                    <div class="cursive sentence">Drip-Notes</div>
+                    <div class="sentence">by NoCream</div>
+                </h1>
+            </div>
+        </section>
+
         <main>
-            <section>
-                <h2>写真載せたいね</h2>
+            <section class="profile">
+                <h2>My Profile</h2>
                 <p>
-                    <a href="/memories">お店，料理の写真はこちら</a>
+                    <a href="#"><button class="profile-button">ぼたん</button></a>
                 </p>
             </section>
 
             <section>
                 <h2>記事一覧</h2>
-                <div class="grid">
+                <div class="posts">
                     {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                         <PostCard
                             title={post.data.title}
@@ -49,7 +89,27 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                     ))}
                 </div>
             </section>
-
         </main>
+
+        <footer class="footer">
+            <div class="footer-container w-container">
+                <div class="cursive">
+                    Drip-Notes
+                </div>
+                <div class="footer-row">
+                    <ul class="footer-sns">
+                        <li><a href="https://x.com/sXMN1au45a68174"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://github.com/NoCream-jp" target="blank" rel="noopener"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                    <ul class="footer-menu">
+                        <li><a href="#">Contact me</a></li>
+                        <li><a href="#">Assets|Credits</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="footer-copy">
+                    @DripNotes
+                </div> -->
+            </div>
+        </footer>
     </body>
 </html>

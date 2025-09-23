@@ -1,5 +1,5 @@
 ---
-title: "first記事"
+title: "一つ目の記事"
 date: "2025-09-21"
 description: "Astroで最初に書いた記事です．記事ページにはクリックで進めます"
 slug: "2025092101"
