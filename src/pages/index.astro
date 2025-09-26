@@ -10,21 +10,18 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
 ---
 
 <html lang="ja">
-    
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DripNotes</title>
         <link rel="stylesheet" href="/styles/index.css">
-        <!-- ほかのフォント -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-        <!-- DancingScript -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-        <!-- Noto Sans JP -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -34,28 +31,29 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
         <header class="header">
             <div class="header-container w-container">
                 <div class="site">
-                    <a href="index.html">
-                        <img class="logo"
-                            src="/images/header_icon.png"
-                            alt="header_icon"
-                            width="50" height="50">
+                    <a href="index.astro">
+                        <img class="logo" src="/images/icon.png" alt="header_icon" width="50" height="50">
                     </a>
                 </div>
                 <div class="site">
-                    <a href="index.html" class="cursive">
+                    <a href="index.html" class="cursive sentence">
                         Drip-Notes
                     </a>
                 </div>
-    <!--
-                <div class="header-setence">
-                    日常ブログ
-                </div>
-                -->
-                <button class="navbtn">
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                     <span class="sr-only">MENU</span>
                 </button>
             </div>
+            <nav class="overlay-nav" id="overlay-nav">
+                <div class="w-container">
+                    <ul>
+                        <li><a href="#profile">Profile</a></li>
+                        <li><a href="#posts">Blog</a></li>
+                        <li><a href="#contact">Works</a></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
 
         <section class="hero">
@@ -69,7 +67,7 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
 
         <main>
             <section class="profile">
-                <h2>My Profile</h2>
+                <h2 class="profile-heading">My Profile</h2>
                 <p>
                     <a href="#"><button class="profile-button">ぼたん</button></a>
                 </p>
@@ -106,10 +104,9 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                         <li><a href="#">Assets|Credits</a></li>
                     </ul>
                 </div>
-                <!-- <div class="footer-copy">
-                    @DripNotes
-                </div> -->
             </div>
         </footer>
+
+        <script src="/scripts/nav.js" defer></script>
     </body>
 </html>

@@ -1,17 +1,137 @@
 body {
-    background-color: #eeeeee;
+    background-color: #ffffff;
+    color: #000000;
     margin: 0;
 }
 
 .cursive {
     color: inherit;
     font-family: "Dancing Script", cursive;
+}
+
+/* ヘッダー */
+.header {
+    background-color: #eeeeee;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    height: 112px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header-container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.header .sentence {
+    color: #000000;
     font-size: 40px;
     text-decoration: none;
 }
 
+/* ハンバーガーメニュー */
+.nav-toggle {
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    z-index: 12;
+}
+
+/* オーバーレイナビ */
+.overlay-nav {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transition: opacity 0.4s ease-in-out;
+    width: 100%;
+    z-index: 11;
+}
+
+.overlay-nav.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.overlay-nav a {
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* heroセクション */
+.hero {
+    align-items: center;
+    background-color: #aaaaaa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 112px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-container .sentence {
+    align-self: flex-start;
+    color: #000000;
+    /* text-shadow: 2px 2px 1px #000000; */
+}
+
+.hero .cursive {
+    font-size: clamp(40px, 8vw, 80px);
+}
+
+/* posts */
+.posts {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+}
+
+.posts::-webkit-scrollbar {
+    height: 8px;
+}
+
+.posts::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+/* footer */
 .footer {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     color: #000000;
     font-size: 20px;
     padding: 70px 0;
@@ -26,159 +146,55 @@ body {
 }
 
 .footer .cursive {
+    font-size: 40px;
     text-align: center;
 }
 
-.footer-row { /* snsとmenu両方 */
+.footer-row {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 8px;
     width: 100%;
-    align-items: center;
 }
 
-.footer-sns {
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-    list-style: none; /* ← ここで点を消す */
-    padding: 0;
-    margin: 0;
-}
+.footer-sns,
 .footer-menu {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    list-style: none; /* ← ここで点を消す */
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 .footer-sns a {
-    display: grid;
-    place-items: center;
-    width: 36px;
+    align-items: center;
     aspect-ratio: 1 / 1;
     background-color: #000000;
-    color: #ffffff;
     clip-path: circle(50%);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
     text-decoration: none;
+    width: 36px;
 }
 
-.footer-menu {
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* .footer */
-@media (min-width: 768px) { /* 幅が広くなると横に展開、snsは列型に並べる */
+/* 768px以上で横並び */
+@media (min-width: 768px) {
     .footer-row {
         align-items: flex-start;
         flex-direction: row;
         justify-content: space-between;
     }
+
     .footer-sns,
     .footer-menu {
         flex-direction: column;
     }
 }
 
-.posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* header {
-
-} */
-
-.header {
-    background-color: #ffffff;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 112px;
-    position: relative;
-    z-index: 2;
-}
-
-.header-container {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: space-between;
-    /* display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    grid-template-columns: 1fr 1fr 100px;
-    height: 100%; */
-}
-
-
-/* .hero {
-    background-image: url("/images/heroimg.jpeg");
-    background-position: center;
-    background-size: cover;
-    height: 663px;
-} */
-
-.hero {
-    align-items: center;
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: -112px;
-    min-height: 100vh;
-    padding-top: 112px;
-    position: relative;
-    text-align: center;
-    z-index: 1;
-}
-
-/* .hero h1 {
-    margin-bottom: 42px;
-} */
-
-.hero-container {
-    display: flex;
-    /*align-items: flex-start;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    margin-top: auto;
-    margin-bottom: auto;
-    position: relative; */
-}
-
-.hero .cursive {
-    font-size: clamp(40px, 8vw, 80px);
-}
-
-.hero-container .sentence { /* 左上に */
-    align-self: flex-start;
-    color: #c0ffee;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-/* .hero-container h2 {
-    align-self: flex-end;
-    color: #ffffff;
-    font-family: "Noto Sans JP", sans-serif;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-} */
-
+/* 共通 */
 img {
     display: block;
 }
@@ -188,20 +204,11 @@ img {
     width: 80px;
 }
 
-.navbtn {
-    background: transparent;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-size: 30px;
-    padding: 25px;
-}
-
 .site {
     cursor: pointer;
 }
 
-.w-container{
+.w-container {
     margin: auto;
     width: min(92%, 1500px);
 }

@@ -1,5 +1,5 @@
 body {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     margin: 0;
 }
 
@@ -41,15 +41,16 @@ body {
     display: flex;
     flex-direction: row;
     gap: 4px;
-    list-style: none; /* ← ここで点を消す */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .footer-menu {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    list-style: none; /* ← ここで点を消す */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -65,13 +66,6 @@ body {
     text-decoration: none;
 }
 
-.footer-menu {
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
 /* .footer */
 @media (min-width: 768px) { /* 幅が広くなると横に展開、snsは列型に並べる */
@@ -141,7 +135,8 @@ h1, h2, h3, h4, h5, h6, p, ul {
     justify-content: center;
     margin-top: -112px;
     min-height: 100vh;
-    padding-top: 112px;
+    /* padding-top: 112px; */
+    padding-bottom: 0;
     position: relative;
     text-align: center;
     z-index: 1;
@@ -153,6 +148,8 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .hero-container {
     display: flex;
+    margin: 0;
+    padding: 0;
     /*align-items: flex-start;
     flex-direction: column;
     height: 100%;
@@ -186,6 +183,10 @@ img {
 .logo {
     height: 80px;
     width: 80px;
+}
+
+main {
+
 }
 
 .navbtn {

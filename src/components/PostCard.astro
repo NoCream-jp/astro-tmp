@@ -1,46 +1,78 @@
 ---
-const { title, date, description, slug } = Astro.props;
+const { title, date, description, slug, thumbnail } = Astro.props;
 ---
 
 <a href={"/blog/" + slug + "/"}>
-  <article class="card">
-    <h2>
-      {title}
-    </h2>
-    <p class="date">{date}</p>
-    <p class="desc">{description}</p>
-  </article>
+    <article class="card">
+        <img class="thumbnail" src={thumbnail} alt={title} />
+        <div class="card-content">
+            <h2>
+                {title}
+            </h2>
+            <p class="date">{date}</p>
+            <p class="desc">{description}</p>
+        </div>
+    </article>
 </a>
 
 <style>
 .card {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin: 12px;
-  max-width: 400px;
-  padding: 16px;
-  transition: transform 0.2s ease;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex: 0 0 280px;
+    margin: 12px;
+    padding: 16px;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 200px; /* カードの高さを固定 */
+	width: 300px;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+.card .thumbnail {
+    width: 100%;
+    height: 150px; /* サムネイル画像の高さを固定 */
+    object-fit: cover; /* 画像がコンテナに合わせて拡大・縮小される */
+    border-radius: 8px 8px 0 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* コンテンツ部分が残りのスペースを埋める */
 }
 
 .card h2 {
-  font-size: 1.4rem;
-  margin: 0 0 8px 0;
+    font-size: 1.4rem;
+    margin: 8px 0;
+    /* タイトルのはみ出しを...で表示 */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .card .date {
-  color: #888;
-  font-size: 0.9rem;
+    color: #888;
+    font-size: 0.9rem;
 }
 
 .card .desc {
-  color: #444;
-  font-size: 1rem;
-  margin-top: 8px;
+    color: #444;
+    font-size: 1rem;
+    margin-top: 8px;
+    /* 説明文のはみ出しを...で表示 */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 </style>
