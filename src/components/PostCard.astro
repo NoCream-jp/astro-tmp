@@ -2,7 +2,7 @@
 const { title, date, description, slug, thumbnail } = Astro.props;
 ---
 
-<a href={"/blog/" + slug + "/"}>
+<a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;">
     <article class="card">
         <img class="thumbnail" src={thumbnail} alt={title} />
         <div class="card-content">
@@ -17,17 +17,20 @@ const { title, date, description, slug, thumbnail } = Astro.props;
 
 <style>
 .card {
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: inherit;
+    display: flex;
     flex: 0 0 280px;
+    flex-direction: column;
+    height: 275px; /* カードの高さを固定 */
     margin: 12px;
     padding: 16px;
     transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    height: 200px; /* カードの高さを固定 */
-	width: 300px;
+    text-decoration: none;
+	width: 350px;
 }
 
 .card:hover {
@@ -40,12 +43,17 @@ const { title, date, description, slug, thumbnail } = Astro.props;
     height: 150px; /* サムネイル画像の高さを固定 */
     object-fit: cover; /* 画像がコンテナに合わせて拡大・縮小される */
     border-radius: 8px 8px 0 0;
+    max-height: 100px; /* 高さの最大値を設定 */
 }
 
 .card-content {
     display: flex;
     flex-direction: column;
     flex-grow: 1; /* コンテンツ部分が残りのスペースを埋める */
+}
+
+.card-content h2 {
+    text-decoration: none;
 }
 
 .card h2 {
@@ -74,5 +82,10 @@ const { title, date, description, slug, thumbnail } = Astro.props;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+}
+
+.card a {
+    text-decoration: none; /* 下線を削除 */
+    color: inherit; /* テキストの色を継承 */
 }
 </style>

@@ -30,20 +30,22 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
     <body>
         <header class="header">
             <div class="header-container w-container">
-                <div class="site">
+                <div class="header-left">
                     <a href="index.astro">
                         <img class="logo" src="/images/icon.png" alt="header_icon" width="50" height="50">
                     </a>
                 </div>
-                <div class="site">
+                <div class="header-center">
                     <a href="index.html" class="cursive sentence">
                         Drip-Notes
                     </a>
                 </div>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                    <span class="sr-only">MENU</span>
-                </button>
+                <div class="header-right">
+                    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                        <span class="sr-only">MENU</span>
+                    </button>
+                </div>
             </div>
             <nav class="overlay-nav" id="overlay-nav">
                 <div class="w-container">
@@ -67,14 +69,17 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
 
         <main>
             <section class="profile">
-                <h2 class="profile-heading">My Profile</h2>
+                <h2 class="profile-heading">Profile</h2>
                 <p>
-                    <a href="#"><button class="profile-button">ぼたん</button></a>
+                    ふん！ふうん！！(気さくな挨拶)
+                </p>
+                <p>
+                    <a href="#"><button class="profile-button">もっと見る</button></a>
                 </p>
             </section>
 
-            <section>
-                <h2>記事一覧</h2>
+            <section class="blog">
+                <h2>Blog</h2>
                 <div class="posts">
                     {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                         <PostCard
@@ -86,6 +91,10 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                         />
                     ))}
                 </div>
+            </section>
+
+            <section class="works">
+                <h2>Works</h2>
             </section>
         </main>
 

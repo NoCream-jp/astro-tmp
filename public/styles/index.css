@@ -1,12 +1,102 @@
+/* 768px以上で横並び */
+
+.blog {
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin: 30px;
+    padding: 20px;
+}
+
+/* 共通 */
 body {
     background-color: #ffffff;
     color: #000000;
     margin: 0;
 }
 
+.cardcontent .date { /* カードの中の文章の余白を削りたい */
+    margin: 0;
+    padding: 0;
+}
+
 .cursive {
     color: inherit;
     font-family: "Dancing Script", cursive;
+}
+
+/* footer */
+.footer {
+    background-color: #eeeeee;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: #000000;
+    display: flex;
+    font-size: 20px;
+    padding: 70px 0;
+    text-align: center;
+}
+
+.footer .cursive {
+    font-size: 40px;
+    text-align: center;
+}
+
+.footer-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-row {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .footer-row {
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-sns,
+    .footer-menu {
+        flex-direction: column;
+    }
+}
+
+.footer-sns {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-sns a {
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    background-color: #000000;
+    clip-path: circle(50%);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    width: 36px;
 }
 
 /* ヘッダー */
@@ -22,6 +112,12 @@ body {
     z-index: 10;
 }
 
+.header .sentence {
+    color: #000000;
+    font-size: 40px;
+    text-decoration: none;
+}
+
 .header-container {
     align-items: center;
     display: flex;
@@ -29,10 +125,55 @@ body {
     justify-content: space-between;
 }
 
-.header .sentence {
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    margin-right: 10px;
+}
+
+.header-center {
+    flex: 1;
+    text-align: left;
+}
+
+.header-right {
+    flex: 0 0 auto;
+}
+
+/* heroセクション */
+.hero {
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 112px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero .cursive {
+    font-size: clamp(40px, 8vw, 80px);
+}
+
+.hero-container .sentence {
+    align-self: flex-start;
     color: #000000;
-    font-size: 40px;
-    text-decoration: none;
+    /* text-shadow: 2px 2px 1px #000000; */
+}
+
+img {
+    display: block;
+}
+
+.logo {
+    height: 80px;
+    width: 80px;
 }
 
 /* ハンバーガーメニュー */
@@ -71,6 +212,13 @@ body {
     pointer-events: auto;
 }
 
+.overlay-nav a {
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .overlay-nav ul {
     display: flex;
     flex-direction: column;
@@ -81,37 +229,6 @@ body {
     text-align: center;
 }
 
-.overlay-nav a {
-    color: #000;
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-/* heroセクション */
-.hero {
-    align-items: center;
-    background-color: #aaaaaa;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    padding-top: 112px;
-    position: relative;
-    text-align: center;
-    z-index: 1;
-}
-
-.hero-container .sentence {
-    align-self: flex-start;
-    color: #000000;
-    /* text-shadow: 2px 2px 1px #000000; */
-}
-
-.hero .cursive {
-    font-size: clamp(40px, 8vw, 80px);
-}
-
 /* posts */
 .posts {
     display: flex;
@@ -119,6 +236,7 @@ body {
     overflow-x: auto;
     padding-bottom: 16px;
 }
+
 
 .posts::-webkit-scrollbar {
     height: 8px;
@@ -129,83 +247,22 @@ body {
     border-radius: 4px;
 }
 
-/* footer */
-.footer {
+.profile {
     background-color: #eeeeee;
-    color: #000000;
-    font-size: 20px;
-    padding: 70px 0;
-    text-align: center;
-}
-
-.footer-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.footer .cursive {
-    font-size: 40px;
-    text-align: center;
-}
-
-.footer-row {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
-.footer-sns,
-.footer-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer-sns a {
-    align-items: center;
-    aspect-ratio: 1 / 1;
-    background-color: #000000;
-    clip-path: circle(50%);
-    color: #ffffff;
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    width: 36px;
-}
-
-/* 768px以上で横並び */
-@media (min-width: 768px) {
-    .footer-row {
-        align-items: flex-start;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .footer-sns,
-    .footer-menu {
-        flex-direction: column;
-    }
-}
-
-/* 共通 */
-img {
-    display: block;
-}
-
-.logo {
-    height: 80px;
-    width: 80px;
+    border-radius: 15px;
+    margin: 30px;
+    padding: 20px;
 }
 
 .site {
     cursor: pointer;
+}
+
+.works {
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin: 30px;
+    padding: 20px;
 }
 
 .w-container {
