@@ -62,24 +62,24 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
             <div class="hero-container w-container">
                 <h1>
                     <div class="cursive sentence">Drip-Notes</div>
-                    <div class="sentence">by NoCream</div>
+                    <div class="sentence" id="handwriting-text"></div>
                 </h1>
             </div>
         </section>
 
         <main>
-            <section class="profile fade-in" id="profile">
-                <h2 class="profile-heading">Profile</h2>
-                <p>
+            <section class="component fade-in" id="profile">
+                <h2 class="profile-heading bottom-border">Profile</h2>
+                <p class="">
                     ふん！ふうん！！(気さくな挨拶)
                 </p>
                 <p>
-                    <a href="#"><button class="profile-button">もっと見る</button></a>
+                    自己紹介
                 </p>
             </section>
 
-            <section class="blog fade-in">
-                <h2>Blog</h2>
+            <section class="component fade-in">
+                <h2 class="bottom-border">Blog</h2>
                 <div class="posts">
                     {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                         <PostCard
@@ -93,8 +93,8 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
                 </div>
             </section>
 
-            <section class="works fade-in" id="contact">
-                <h2>Works</h2>
+            <section class="component fade-in" id="contact">
+                <h2 class="bottom-border">Works</h2>
             </section>
         </main>
 
@@ -109,8 +109,8 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
                         <li><a href="https://github.com/NoCream-jp" target="blank" rel="noopener"><i class="fab fa-github"></i></a></li>
                     </ul>
                     <ul class="footer-menu">
-                        <li><a class="site" href="#">Contact me →</a></li>
-                        <li><a class="site" href="#">Assets|Credits →</a></li>
+                        <li><a class="site" href="#">Contact me ▷</a></li>
+                        <li><a class="site" href="#">Assets | Credits ▷</a></li>
                     </ul>
                 </div>
             </div>

@@ -49,3 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
 });
+
+// 手書き風テキストアニメーション
+document.addEventListener("DOMContentLoaded", () => {
+    const text = "by NoCream";
+    const container = document.getElementById("handwriting-text");
+    let index = 0;
+
+    const type = () => {
+        if (index < text.length) {
+            container.textContent += text[index];
+            index++;
+            setTimeout(type, 80); // 1文字ごとに200msの遅延
+        }
+    };
+
+    type();
+});

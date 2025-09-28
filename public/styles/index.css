@@ -11,6 +11,7 @@
 body {
     background-color: #ffffff;
     color: #000000;
+    font-family: Noto Sans JP, sans-serif;
     margin: 0;
 }
 
@@ -40,14 +41,14 @@ body {
 /* footer */
 .footer {
     background-color: #eeeeee;
-    text-align: center;
-    padding: 100px 0; /* フッター内の余白 */
-    position: relative;
-    width: 100%;
-    height: 150px; /* フッター全体の高さ */
     border-top-left-radius: 100% 75px; /* 左側の丸み */
     border-top-right-radius: 100% 75px; /* 右側の丸み */
+    height: 150px; /* フッター全体の高さ */
     overflow: hidden; /* 内容が丸みを超えないようにする */
+    padding: 100px 0; /* フッター内の余白 */
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
 .footer .cursive {
@@ -115,26 +116,17 @@ body {
 
 /* ヘッダー */
 .header {
-    /* background-color: #eeeeee;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    height: 112px;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10; */
-
     background-color: #eeeeee; /* ヘッダーの背景色 */
-    color: white; /* テキストの色 */
-    text-align: center;
-    padding: 50px 0; /* ヘッダー内の余白 */
-    position: relative;
-    width: 100%;
-    height: 70px; /* ヘッダー全体の高さ */
     border-bottom-left-radius: 100% 75px; /* 左側の丸み */
     border-bottom-right-radius: 100% 75px; /* 右側の丸み */
+    color: white; /* テキストの色 */
+    height: 100px; /* ヘッダー全体の高さ */
     overflow: hidden; /* 内容が丸みを超えないようにする */
+    padding: 10px 0; /* ヘッダー内の余白 */
+    padding-bottom: 30px;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
 .header img {
@@ -155,8 +147,8 @@ body {
 }
 
 .header-left {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 
 .header-left img {
@@ -180,7 +172,6 @@ body {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    padding-top: 112px;
     position: relative;
     text-align: center;
     z-index: 1;
@@ -193,7 +184,6 @@ body {
 .hero-container .sentence {
     align-self: flex-start;
     color: #000000;
-    /* text-shadow: 2px 2px 1px #000000; */
 }
 
 img {
@@ -266,7 +256,6 @@ img {
     padding-bottom: 16px;
 }
 
-
 .posts::-webkit-scrollbar {
     height: 8px;
 }
@@ -276,26 +265,35 @@ img {
     border-radius: 4px;
 }
 
-.profile {
-    background-color: #eeeeee;
+.component {
+    border: 1px solid;
     border-radius: 15px;
     margin: 30px;
     padding: 20px;
+}
+
+.profile-heading {
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.bottom-border {
+    border-bottom: 1px solid #cccccc;
 }
 
 .site {
+    color: inherit;
     cursor: pointer;
     text-decoration: none;
-}
-
-.works {
-    background-color: #eeeeee;
-    border-radius: 15px;
-    margin: 30px;
-    padding: 20px;
 }
 
 .w-container {
     margin: auto;
     width: min(92%, 1500px);
+}
+
+#handwriting-text {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.5rem;
+    white-space: nowrap;
 }
