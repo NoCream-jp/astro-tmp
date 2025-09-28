@@ -5,8 +5,8 @@ import { getCollection } from 'astro:content';
 // blog コレクションを取得
 const posts = await getCollection("blog");
 
-// 日付順で降順にソート（最新記事が上）
-posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: string | number | Date; }; }) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+// slug 順にソート
+posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.data.slug.localeCompare(a.data.slug));
 ---
 
 <html lang="ja">
@@ -68,7 +68,7 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
         </section>
 
         <main>
-            <section class="profile">
+            <section class="profile fade-in" id="profile">
                 <h2 class="profile-heading">Profile</h2>
                 <p>
                     ふん！ふうん！！(気さくな挨拶)
@@ -78,7 +78,7 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                 </p>
             </section>
 
-            <section class="blog">
+            <section class="blog fade-in">
                 <h2>Blog</h2>
                 <div class="posts">
                     {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
@@ -93,12 +93,12 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                 </div>
             </section>
 
-            <section class="works">
+            <section class="works fade-in" id="contact">
                 <h2>Works</h2>
             </section>
         </main>
 
-        <footer class="footer">
+        <footer class="footer fade-in">
             <div class="footer-container w-container">
                 <div class="cursive">
                     Drip-Notes
@@ -109,13 +109,13 @@ posts.sort((a: { data: { date: string | number | Date; }; }, b: { data: { date: 
                         <li><a href="https://github.com/NoCream-jp" target="blank" rel="noopener"><i class="fab fa-github"></i></a></li>
                     </ul>
                     <ul class="footer-menu">
-                        <li><a href="#">Contact me</a></li>
-                        <li><a href="#">Assets|Credits</a></li>
+                        <li><a class="site" href="#">Contact me →</a></li>
+                        <li><a class="site" href="#">Assets|Credits →</a></li>
                     </ul>
                 </div>
             </div>
         </footer>
 
-        <script src="/scripts/nav.js" defer></script>
+        <script src="/scripts/indexScript.js" defer></script>
     </body>
 </html>

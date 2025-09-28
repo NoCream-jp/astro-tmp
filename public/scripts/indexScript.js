@@ -32,3 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fadeInElements = document.querySelectorAll(".fade-in");
+
+    const handleScroll = () => {
+        fadeInElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 120 > 0) {
+                el.classList.add("visible");
+            }
+        });
+    };
+
+    // 初期チェックとスクロールイベントの登録
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+});
