@@ -7,6 +7,10 @@ const posts = await getCollection("blog");
 
 // slug 順にソート
 posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.data.slug.localeCompare(a.data.slug));
+
+// 記事の数を制限
+const limitedPosts = posts.slice(0, 6);
+const hasMorePosts = posts.length > 6;
 ---
 
 <html lang="ja">
@@ -37,7 +41,7 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
                 </div>
                 <div class="header-center">
                     <a href="index.html" class="cursive sentence">
-                        Drip-Notes
+                        Dri<span class="highlight">p</span>-Notes
                     </a>
                 </div>
                 <div class="header-right">
@@ -61,7 +65,7 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
         <section class="hero">
             <div class="hero-container w-container">
                 <h1>
-                    <div class="cursive sentence">Drip-Notes</div>
+                    <div class="cursive sentence">Dri<span class="highlight">p</span>-Notes</div>
                     <div class="sentence" id="handwriting-text"></div>
                 </h1>
             </div>
@@ -78,10 +82,10 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
                 </p>
             </section>
 
-            <section class="component fade-in">
+            <section class="component fade-in" id="posts">
                 <h2 class="bottom-border">Blog</h2>
-                <div class="posts">
-                    {posts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
+                <div class="posts-container">
+                    {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                         <PostCard
                             title={post.data.title}
                             date={post.data.date}
@@ -90,6 +94,9 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
                             thumbnail={post.data.thumbnail}
                         />
                     ))}
+                </div>
+                <div class="show-more">
+                    <button class="show-more-button">show more ▽</button>
                 </div>
             </section>
 
@@ -101,12 +108,13 @@ posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.
         <footer class="footer fade-in">
             <div class="footer-container w-container">
                 <div class="cursive">
-                    Drip-Notes
+                    Dri<span class="highlight">p</span>-Notes
                 </div>
                 <div class="footer-row">
                     <ul class="footer-sns">
                         <li><a href="https://x.com/sXMN1au45a68174"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="https://github.com/NoCream-jp" target="blank" rel="noopener"><i class="fab fa-github"></i></a></li>
+                        <!-- <li><a href="https://atcoder.jp/users/Caffeineholic" target="blank" rel="noopener"><img src="C:my-astro-site\public\images\AtCoder_logo_white.png" alt="AtCoder logo" style="background-color: #333;"></a></li> -->
                     </ul>
                     <ul class="footer-menu">
                         <li><a class="site" href="#">Contact me ▷</a></li>

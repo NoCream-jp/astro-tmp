@@ -20,6 +20,13 @@ body {
     padding: 0;
 }
 
+.component {
+    border: 1px solid;
+    border-radius: 15px;
+    margin: 30px;
+    padding: 20px;
+}
+
 .cursive {
     color: inherit;
     font-family: "Dancing Script", cursive;
@@ -249,27 +256,11 @@ img {
 }
 
 /* posts */
-.posts {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding-bottom: 16px;
-}
-
-.posts::-webkit-scrollbar {
-    height: 8px;
-}
-
-.posts::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-}
-
-.component {
-    border: 1px solid;
-    border-radius: 15px;
-    margin: 30px;
-    padding: 20px;
+.posts-container {
+    overflow: hidden;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .profile-heading {
@@ -296,4 +287,30 @@ img {
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 1.5rem;
     white-space: nowrap;
+}
+
+.show-more {
+    position: absolute;
+    bottom: -25px;
+    left:50%;
+    transform: translatex(-50%);
+}
+
+.show-more-button {
+    background: #ffffff;
+    border: #333333;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 12px 32px;
+    font-size: 1rem;
+    border: solid 1px #333333;
+}
+
+.show-more-button:hover {
+    background: #333333;
+    color: #c0ffee;
+}
+
+.highlight{
+    color: #6effd8;
 }
