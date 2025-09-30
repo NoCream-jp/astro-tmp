@@ -2,26 +2,22 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
-// props から slug を取得
 const { slug } = Astro.params;
 
-// blog コレクションから該当記事を探す
 const posts = await getCollection('blog');
 const post = posts.find((p: { slug: any; }) => p.slug === slug);
 
 if (!post) {
-    throw new Error(`Post not found for slug: ${slug}`);
+  throw new Error(`Post not found for slug: ${slug}`);
 }
 
-// Markdown を HTML に変換
 const { Content } = await post.render();
 
-// ★ 動的ルート用：全ての slug を返す
 export async function getStaticPaths() {
-    const posts = await getCollection('blog');
-    return posts.map((post: { slug: any; }) => ({
-        params: { slug: post.slug },
-    }));
+  const posts = await getCollection('blog');
+  return posts.map((post: { slug: any; }) => ({
+    params: { slug: post.slug },
+  }));
 }
 ---
 
@@ -30,13 +26,133 @@ export async function getStaticPaths() {
     <meta charset="UTF-8" />
     <title>{post.data.title}</title>
     <meta name="description" content={post.data.description} />
+    <style>
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Hiragino Sans", sans-serif;
+        background: #fff;
+        color: #222;
+      }
+
+      article {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 40px;
+        border: 1px solid #000;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      /* サムネイル画像 */
+      .thumbnail {
+        display: block;
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;           /* はみ出さず切り抜き */
+        border: 1px solid #000;
+        border-radius: 6px;
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5em;
+        text-align: center;
+        color: var(--theme);
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      em {
+        display: block;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      article div {
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      h2, h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--theme);
+        font-weight: 600;
+      }
+
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.4rem; }
+
+      a {
+        color: var(--theme);
+        text-decoration: none;
+        border-bottom: 1px solid var(--theme);
+        transition: color 0.2s, border-color 0.2s;
+      }
+
+      a:hover {
+        color: #88ddcc;
+        border-color: #88ddcc;
+      }
+
+      img:not(.thumbnail) {
+        display: block;
+        max-width: 100%;
+        margin: 1.5rem auto;
+        border: 1px solid #000;
+        border-radius: 4px;
+      }
+
+      pre {
+        background: #f5f5f5;
+        color: #111;
+        padding: 1rem;
+        border-radius: 4px;
+        border: 1px solid #000;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      ul, ol {
+        padding-left: 1.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.95rem;
+      }
+
+      th, td {
+        border: 1px solid #000;
+        padding: 0.5rem 0.75rem;
+      }
+
+      th {
+        background: var(--theme);
+        color: #000;
+      }
+    </style>
   </head>
   <body>
     <article>
+      {post.data.thumbnail && (
+        <img
+          src={post.data.thumbnail}
+          alt={`サムネイル画像: ${post.data.title}`}
+          class="thumbnail"
+        />
+      )}
       <h1>{post.data.title}</h1>
-      <p><em>{post.data.date}</em></p>
+      <em>{post.data.date}</em>
       <div>
-        <!-- Markdown を HTML に変換して表示する -->
         <Content />
       </div>
     </article>

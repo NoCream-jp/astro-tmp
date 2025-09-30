@@ -4,7 +4,7 @@ const { title, date, description, slug, thumbnail } = Astro.props;
 
 <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;">
     <article class="card">
-        <img class="thumbnail" src={thumbnail} alt={title} />
+        <img class="thumbnail" src={thumbnail} alt="thumbnail" />
         <div class="card-content">
             <h2>
                 {title}
@@ -32,7 +32,7 @@ const { title, date, description, slug, thumbnail } = Astro.props;
 
 .card:hover {
     background-color: #f2fffb;
-    border-color: #4cf4c7;
+    border-color: #45fdcc;
 }
 
 .card .thumbnail {
