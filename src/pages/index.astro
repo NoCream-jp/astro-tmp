@@ -35,11 +35,11 @@ const hasMorePosts = posts.length > 6;
         <header class="header">
             <div class="header-container w-container">
                 <div class="header-left">
-                    <a href="index.astro">
+                    <a href="/">
                         <img class="logo" src="/images/icon.png" alt="header_icon" width="50" height="50">
                     </a>
                 </div>
-                <div class="header-center">
+                <div class="header-center appear">
                     <a href="index.html" class="cursive sentence">
                         Dri<span class="highlight">p</span>-Notes
                     </a>
@@ -75,14 +75,14 @@ const hasMorePosts = posts.length > 6;
             <section class="component fade-in" id="profile">
                 <h2 class="profile-heading bottom-border">Profile</h2>
                 <p class="">
-                    ふん！ふうん！！(気さくな挨拶)
+                    ネットワーク、ブロックチェーン、セキュリティ、web開発を学んでいる学生です。
                 </p>
                 <p>
                     自己紹介
                 </p>
             </section>
 
-            <section class="component fade-in" id="posts">
+            <section class="component fade-in target" id="posts">
                 <h2 class="bottom-border">Blog</h2>
                 <div class="posts-container">
                     {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
@@ -96,12 +96,15 @@ const hasMorePosts = posts.length > 6;
                     ))}
                 </div>
                 <div class="show-more">
-                    <button class="show-more-button">show more ▽</button>
+                    <a href=""><button class="show-more-button">show more ▽</button></a>
                 </div>
             </section>
 
             <section class="component fade-in" id="contact">
                 <h2 class="bottom-border">Works</h2>
+                <div class="show-more">
+                    <a href=""><button class="show-more-button">show more ▽</button></a>
+                </div>
             </section>
         </main>
 

@@ -47,10 +47,12 @@ body {
 
 /* footer */
 .footer {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     border-top-left-radius: 100% 75px; /* 左側の丸み */
     border-top-right-radius: 100% 75px; /* 右側の丸み */
+    border: solid 1px #cccccc;
     height: 150px; /* フッター全体の高さ */
+    margin-top: 200px;
     overflow: hidden; /* 内容が丸みを超えないようにする */
     padding: 100px 0; /* フッター内の余白 */
     position: relative;
@@ -123,17 +125,22 @@ body {
 
 /* ヘッダー */
 .header {
-    background-color: #eeeeee; /* ヘッダーの背景色 */
-    border-bottom-left-radius: 100% 75px; /* 左側の丸み */
-    border-bottom-right-radius: 100% 75px; /* 右側の丸み */
-    color: white; /* テキストの色 */
-    height: 100px; /* ヘッダー全体の高さ */
-    overflow: hidden; /* 内容が丸みを超えないようにする */
-    padding: 10px 0; /* ヘッダー内の余白 */
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    border-bottom-left-radius: 100% 75px;
+    border-bottom-right-radius: 100% 75px;
+    color: white;
+    height: 100px;
+    overflow: hidden;
+    padding: 10px 0;
     padding-bottom: 30px;
     position: relative;
     text-align: center;
     width: 100%;
+
+    position: sticky; /* スクロールに追従し固定 */
+    top: 0; /* 画面の一番上で固定 */
+    z-index: 100; /* 他の要素より手前に表示 */
 }
 
 .header img {
@@ -219,7 +226,7 @@ img {
 /* オーバーレイナビ */
 .overlay-nav {
     align-items: center;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 1);
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -239,6 +246,8 @@ img {
 }
 
 .overlay-nav a {
+    width: 150px;
+    padding: 10px 20px;
     color: #000;
     font-size: 2rem;
     font-weight: bold;
@@ -313,4 +322,15 @@ img {
 
 .highlight{
     color: #6effd8;
+}
+
+/* ヘッダータイトルを初期状態で非表示にする */
+.header-center.appear {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* スムーズに表示するためのアニメーション */
+}
+
+/* visibleクラスが付与されたら表示する */
+.header-center.appear.visible {
+    opacity: 1;
 }
