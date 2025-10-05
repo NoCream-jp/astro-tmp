@@ -38,7 +38,7 @@ const { title, date, description, slug, thumbnail } = Astro.props;
 .card .thumbnail {
     width: 20%;
     height: 20%; /* サムネイル画像の高さを固定 */
-    object-fit: cover; /* 画像がコンテナに合わせて拡大・縮小される */
+    object-fit:contain; /* 画像がコンテナに合わせて拡大・縮小される */
     border-radius: 8px 8px 0 0;
     max-height: 100px; /* 高さの最大値を設定 */
 }

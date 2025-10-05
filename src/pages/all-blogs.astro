@@ -1,0 +1,49 @@
+---
+import PostCard from '@/components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+// blog コレクションを取得
+const posts = await getCollection("blog");
+
+// slug順にソート
+posts.sort(
+  (a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.data.slug.localeCompare(a.data.slug)
+);
+---
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DripNotes</title>
+  <link rel="stylesheet" href="/styles/index.css">
+</head>
+
+<body>
+  <main>
+    <section class="posts-container">
+      {posts.map((post: { data: { title: unknown; date: unknown; description: unknown; slug: unknown; thumbnail: unknown; }; }) => (
+        <PostCard
+          title={post.data.title}
+          date={post.data.date}
+          description={post.data.description}
+          slug={post.data.slug}
+          thumbnail={post.data.thumbnail}
+        />
+      ))}
+    </section>
+  </main>
+</body>
+</html>
+
+<style>
+/* グリッド配置 */
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 可変グリッド */
+  gap: 20px;                  /* カード間の余白 */
+  max-width: 1200px;          /* コンテナの最大幅 */
+  margin: 40px auto;          /* 中央寄せ */
+  padding: 0 20px;            /* 画面端の余白 */
+}
+</style>
