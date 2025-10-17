@@ -67,39 +67,28 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
 });
 
-// 
-// ファイル: /scripts/indexScript.js
+// hero内の文字可視状態でヘッダーの表示/非表示を制御（b: 見えている間は非表示、フレームアウトで表示）
+document.addEventListener('DOMContentLoaded', () => {
+    const heroText = document.getElementById('handwriting-text');
+    const headerSentence = document.querySelector('.header-center.appear');
+    if (!heroText || !headerSentence) return;
 
-// 監視対象のトリガーとなる要素（.targetを持つ要素）を取得
-const triggerElement = document.querySelector('.target');
-
-// 表示させたいヘッダーのタイトル（.appearを持つ要素）を取得
-const elementToShow = document.querySelector('.appear');
-
-// 両方の要素がページに存在する場合のみ、処理を実行
-if (triggerElement && elementToShow) {
-
-    const checkTriggerPosition = () => {
-        // トリガー要素の上辺の位置を取得
-        const triggerPosition = triggerElement.getBoundingClientRect().top;
-        
-        // ウィンドウの高さを取得
-        const windowHeight = window.innerHeight;
-
-        // 条件分岐：トリガー要素が画面内に入ったか、外に出たか
-        if (triggerPosition < windowHeight) {
-            // 画面内に入ったら 'visible' クラスを追加して表示
-            elementToShow.classList.add('visible');
-        } else {
-            // 画面外（上側）に出たら 'visible' クラスを削除して非表示
-            elementToShow.classList.remove('visible');
+    const observer = new IntersectionObserver(
+        (entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+                // hero文字が見えている → ヘッダーは非表示
+                headerSentence.classList.remove('visible');
+            } else {
+                // hero文字がフレームアウト → ヘッダーを表示
+                headerSentence.classList.add('visible');
+            }
+        },
+        {
+            root: null,
+            threshold: 0.1,
         }
-    };
+    );
 
-    // スクロールするたびに位置をチェックするイベントを設定
-    // ※常に監視するため、イベントの削除処理は行いません
-    window.addEventListener('scroll', checkTriggerPosition);
-
-    // ページ読み込み時に、すでにトリガーが画面内にあるか一度チェック
-    document.addEventListener('DOMContentLoaded', checkTriggerPosition);
-}
+    observer.observe(heroText);
+});

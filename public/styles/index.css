@@ -21,10 +21,12 @@ body {
 }
 
 .component {
-    border: 1px solid;
-    border-radius: 15px;
+    /* border: 1px solid;
+    border-radius: 15px; */
     margin: 30px;
     padding: 20px;
+    position: relative;
+    margin-bottom: 100px;
 }
 
 .cursive {
@@ -48,11 +50,8 @@ body {
 /* footer */
 .footer {
     background-color: #ffffff;
-    border-top-left-radius: 100% 75px; /* 左側の丸み */
-    border-top-right-radius: 100% 75px; /* 右側の丸み */
-    border: solid 1px #cccccc;
+    border: solid 1px #111111;
     height: 150px; /* フッター全体の高さ */
-    margin-top: 200px;
     overflow: hidden; /* 内容が丸みを超えないようにする */
     padding: 100px 0; /* フッター内の余白 */
     position: relative;
@@ -95,7 +94,6 @@ body {
         flex-direction: row;
         justify-content: space-between;
     }
-
     .footer-sns,
     .footer-menu {
         flex-direction: column;
@@ -126,14 +124,14 @@ body {
 /* ヘッダー */
 .header {
     background-color: #ffffff;
-    border: solid 1px #cccccc;
-    border-bottom-left-radius: 100% 75px;
-    border-bottom-right-radius: 100% 75px;
+    border: solid 1px #111111;
+    /* border-bottom-left-radius: 100% 75px;
+    border-bottom-right-radius: 100% 75px; */
     color: white;
     height: 100px;
     overflow: hidden;
     padding: 10px 0;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
     position: relative;
     text-align: center;
     width: 100%;
@@ -267,9 +265,14 @@ img {
 /* posts */
 .posts-container {
     overflow: hidden;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* 次の要素だけに上罫線（重なりによる太線化を防ぐ） */
+.posts-container > a + a .card {
+    border-top: 1px solid #dddddd;
 }
 
 .profile-heading {
@@ -301,7 +304,7 @@ img {
 .show-more {
     position: absolute;
     bottom: -25px;
-    left:50%;
+    left: 50%;
     transform: translatex(-50%);
 }
 
@@ -333,4 +336,9 @@ img {
 /* visibleクラスが付与されたら表示する */
 .header-center.appear.visible {
     opacity: 1;
+}
+
+.profile-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }

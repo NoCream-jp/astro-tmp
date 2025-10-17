@@ -54,9 +54,9 @@ const hasMorePosts = posts.length > 6;
             <nav class="overlay-nav" id="overlay-nav">
                 <div class="w-container">
                     <ul>
-                        <li><a href="#profile">Profile</a></li>
-                        <li><a href="#posts">Blog</a></li>
-                        <li><a href="#contact">Works</a></li>
+                        <li><a href="/profile/">Profile</a></li>
+                        <li><a href="/all-blogs/">Blog</a></li>
+                        <li><a href="/all-works/">Works</a></li>
                     </ul>
                 </div>
             </nav>
@@ -73,17 +73,20 @@ const hasMorePosts = posts.length > 6;
 
         <main>
             <section class="component fade-in" id="profile">
-                <h2 class="profile-heading bottom-border">Profile</h2>
-                <p class="">
+                <h2 class="profile-heading">Profile</h2>
+                <p class="profile-text">
                     ネットワーク、ブロックチェーン、セキュリティ、web開発を学んでいる学生です。
                 </p>
-                <p>
+                <p class="profile-text">
                     自己紹介
                 </p>
+                <div class="show-more">
+                    <a href="/profile/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
+                </div>
             </section>
 
             <section class="component fade-in target" id="posts">
-                <h2 class="bottom-border">Blog</h2>
+                <h2 class="">Blog</h2>
                 <div class="posts-container">
                     {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                         <PostCard
@@ -101,7 +104,7 @@ const hasMorePosts = posts.length > 6;
             </section>
 
             <section class="component fade-in" id="contact">
-                <h2 class="bottom-border">Works</h2>
+                <h2 class="">Works</h2>
                 <div class="show-more">
                     <a href="/all-works/"><button class="show-more-button">show more ↗</button></a>
                 </div>
