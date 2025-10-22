@@ -25,19 +25,21 @@ const { title, date, description, slug, thumbnail } = Astro.props;
         padding: 16px;
         min-height: 100px;
         box-sizing: border-box;
-        background-color: #ffffff;
-        transition: background-color 0.2s ease;
+        background-color: none; /* デフォルトの背景色 */
+        border: 1px solid transparent; /* デフォルトで透明なボーダーを設定 */
+        transition: background-color 0.4s ease, border-color 0.4s ease; /* ホバー時のアニメーション */
     }
-    
+
     .card:hover {
         background-color: #f2fffb;
+        border-color: #0bf8b9; /* ホバー時にボーダーの色だけを変更 */
     }
-    
+
     .card .thumbnail {
         width: 120px;
-        height: 80px;
+        height: 100px;
         object-fit: cover;
-        border-radius: 8px;
+        /* border-radius: 8px; */
         flex-shrink: 0;
     }
     
@@ -59,7 +61,8 @@ const { title, date, description, slug, thumbnail } = Astro.props;
     }
     
     .card h2 { /* title */
-        font-size: 1.2rem;
+        color: #444444;
+        font-size: 1.4rem;
         margin: 0;
         white-space: nowrap;
         overflow: hidden;
