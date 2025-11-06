@@ -27,19 +27,20 @@ const { title, date, description, slug, thumbnail } = Astro.props;
         box-sizing: border-box;
         background-color: none; /* デフォルトの背景色 */
         border: 1px solid transparent; /* デフォルトで透明なボーダーを設定 */
+        border-radius: 10px;
         transition: background-color 0.4s ease, border-color 0.4s ease; /* ホバー時のアニメーション */
     }
 
     .card:hover {
-        background-color: #f2fffb;
-        border-color: #0bf8b9; /* ホバー時にボーダーの色だけを変更 */
+        background-color: #ffefe4;
+        border-color: #d0844e; /* ホバー時にボーダーの色だけを変更 */
     }
 
     .card .thumbnail {
         width: 120px;
         height: 100px;
         object-fit: cover;
-        /* border-radius: 8px; */
+        border-radius: 8px;
         flex-shrink: 0;
     }
     

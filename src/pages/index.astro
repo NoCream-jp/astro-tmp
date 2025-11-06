@@ -41,7 +41,7 @@ const hasMorePosts = posts.length > 6;
                 </div>
                 <div class="header-center appear">
                     <a href="index.html" class="sentence">
-                        Dri<span class="highlight">p</span>-Notes
+                        Drip-Notes
                     </a>
                 </div>
                 <div class="header-right">
@@ -63,50 +63,58 @@ const hasMorePosts = posts.length > 6;
         </header>
 
         <section class="hero">
-            <div class="hero-container w-container">
+            <div class="hero-container">
+                <img class="hero-img" src="/images/hero-coffee.png" alt="hero-img">
                 <h1>
-                    <div class="sentence">Dri<span class="highlight">p</span>-Notes</div>
+                    <div class="sentence">Drip-Notes</div>
                     <div class="sentence" id="handwriting-text"></div>
                 </h1>
             </div>
         </section>
 
         <main>
-            <section class="component fade-in" id="profile">
-                <h2 class="profile-heading">Profile</h2>
-                <p class="profile-text">
-                    ネットワーク、ブロックチェーン、セキュリティ、web開発を学んでいる学生です。
-                </p>
-                <p class="profile-text">
-                    自己紹介
-                </p>
-                <div class="show-more">
-                    <a href="/profile/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
+            <section class="component bg-gray" id="profile">
+                <div class="component-container fade-in">
+                    <h2 class="profile-heading">Profile</h2>
+                    <p class="profile-text">
+                        ネットワーク、ブロックチェーン、セキュリティ、web開発を学んでいる学生です。
+                    </p>
+                    <p class="profile-text">
+                        自己紹介
+                    </p>
+                    <div class="show-more">
+                        <a href="/profile/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
+                    </div>
                 </div>
             </section>
 
-            <section class="component fade-in target" id="posts">
-                <h2 class="">Blog</h2>
-                <div class="posts-container">
-                    {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
-                        <PostCard
-                            title={post.data.title}
-                            date={post.data.date}
-                            description={post.data.description}
-                            slug={post.slug}
-                            thumbnail={post.data.thumbnail}
-                        />
-                    ))}
+            <section class="component target" id="posts">
+                <div class="component-container fade-in">
+                    <h2 class="">Blog</h2>
+                    <div class="posts-container">
+                        {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
+                            <PostCard
+                                title={post.data.title}
+                                date={post.data.date}
+                                description={post.data.description}
+                                slug={post.slug}
+                                thumbnail={post.data.thumbnail}
+                            />
+                        ))}
+                    </div>
+                    <div class="show-more">
+                        <a href="/all-blogs/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
+                    </div>
                 </div>
-                <div class="show-more">
-                    <a href="/all-blogs/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
-                </div>
+                
             </section>
 
-            <section class="component fade-in" id="contact">
-                <h2 class="">Works</h2>
-                <div class="show-more">
-                    <a href="/all-works/"><button class="show-more-button">show more ↗</button></a>
+            <section class="component bg-gray" id="contact">
+                <div class="component-container fade-in">
+                    <h2 class="">Works</h2>
+                    <div class="show-more">
+                        <a href="/all-works/"><button class="show-more-button">show more ↗</button></a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -114,7 +122,7 @@ const hasMorePosts = posts.length > 6;
         <footer class="footer fade-in">
             <div class="footer-container w-container">
                 <div class="sentence">
-                    Dri<span class="highlight">p</span>-Notes
+                    Drip-Notes
                 </div>
                 <div class="footer-row">
                     <ul class="footer-sns">

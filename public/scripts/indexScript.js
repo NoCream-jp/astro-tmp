@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 手書き風テキストアニメーション
 document.addEventListener("DOMContentLoaded", () => {
-    const text = "by NoCream";
+    const text = "by Minato Hayashi";
     const container = document.getElementById("handwriting-text");
     let index = 0;
 

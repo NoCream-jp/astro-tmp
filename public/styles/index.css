@@ -1,5 +1,9 @@
-/* 768px以上で横並び */
+.bg-gray {
+    background-color: #f5f7fa;
+}
 
+
+/* 768px以上で横並び */
 .blog {
     background-color: #eeeeee;
     border-radius: 15px;
@@ -21,12 +25,15 @@ body {
 }
 
 .component {
+    margin-bottom: 100px;
+}
+
+.component-container {
     /* border: 1px solid;
     border-radius: 15px; */
-    margin: 30px;
     padding: 20px;
     position: relative;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 
 .cursive {
@@ -49,7 +56,8 @@ body {
 
 /* footer */
 .footer {
-    background-color: #ffffff;
+    background-color: #633f26;
+    color: white;
     border: solid 1px #111111;
     height: 150px; /* フッター全体の高さ */
     overflow: hidden; /* 内容が丸みを超えないようにする */
@@ -123,8 +131,8 @@ body {
 
 /* ヘッダー */
 .header {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
-    border: solid 1px #111111;
     /* border-bottom-left-radius: 100% 75px;
     border-bottom-right-radius: 100% 75px; */
     color: white;
@@ -139,10 +147,6 @@ body {
     position: sticky; /* スクロールに追従し固定 */
     top: 0; /* 画面の一番上で固定 */
     z-index: 100; /* 他の要素より手前に表示 */
-}
-
-.header img {
-    /* border-radius: 10px; 角を丸める場合 */
 }
 
 .header .sentence {
@@ -179,12 +183,17 @@ body {
 /* heroセクション */
 .hero {
     align-items: center;
+    /* align-items: center; */ /* hero-containerがコンテンツを管理するため、hero自体のalign-itemsは不要 */
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     min-height: 100vh;
     position: relative;
+    /* text-align: center; */ /* hero-containerがコンテンツを管理するため、hero自体のtext-alignは不要 */
+}
+
+.hero-container {
+
+    width: 100%;
+    height: 100%;
     text-align: center;
     z-index: 1;
 }
@@ -192,7 +201,36 @@ body {
 .hero-container .sentence {
     font-size: clamp(40px, 8vw, 80px);
     align-self: flex-start;
-    color: #000000;
+    color: #eeeeee;
+}
+
+.hero-container h1 {
+    position: absolute; /* hero-container内で絶対配置 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央に配置 */
+    z-index: 2; /* 画像より手前に表示 */
+    color: #ffffff; /* 画像の上でも読みやすいように白に設定 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字の視認性を高める影 */
+    margin: 0; /* h1のデフォルトマージンを削除 */
+}
+
+.hero-img {
+    filter: blur(8px);
+    object-fit: contain;
+    width:100%;
+    position: absolute; /* hero-container内で絶対配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 親要素いっぱいに画像を拡大・縮小し、足りない部分は切り取る */
+    z-index: 0; /* 文字の背面に表示 */
+    display: block; /* 画像の余白をなくす */
+}
+
+.hero .sentence {
+    text-shadow: #eeeeee;
 }
 
 img {
@@ -300,7 +338,6 @@ img {
 
 .show-more {
     position: absolute;
-    bottom: -50px;
     left: 50%;
     transform: translatex(-50%);
 }
@@ -308,6 +345,7 @@ img {
 .show-more-button {
     background: #ffffff;
     border: #333333;
+    border-radius: 5px;
     cursor: pointer;
     padding: 12px 32px;
     font-size: 1rem;
@@ -315,9 +353,9 @@ img {
 }
 
 .show-more-button:hover {
-    background: #333334;
-    color: #c0ffee;
-    transition: background-color 0.4s ease
+    background: #633f26;
+    color: #ffffff;
+    transition: background-color 0.3s ease
 }
 
 .highlight{
