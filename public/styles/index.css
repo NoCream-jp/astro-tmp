@@ -79,6 +79,10 @@ body {
     gap: 16px;
 }
 
+.footer-container .sentence {
+    font-size: clamp(25px, 5vw, 55px);
+}
+
 .footer-menu {
     display: flex;
     flex-direction: column;
