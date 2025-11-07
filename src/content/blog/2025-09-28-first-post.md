@@ -3,6 +3,7 @@ title: "丸いfooter"
 date: "2025-09-28"
 description: "丸いスタイルを使ってみたりカードを浮かせたり、見た目をもっとシンプルにしたりと試行錯誤してみた"
 slug: "2025092801"
+thumbnail: "/images/heroimg.jpeg"
 ---
 
 #### サイト作りって面倒

@@ -247,6 +247,7 @@ img {
     align-items: center;
     background: none;
     border: none;
+    color: #8b5935;
     cursor: pointer;
     display: flex;
     font-size: 1.5rem;
@@ -260,6 +261,7 @@ img {
 .overlay-nav {
     align-items: center;
     background: rgba(255, 255, 255, 1);
+    color: #633f26;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -281,7 +283,7 @@ img {
 .overlay-nav a {
     width: 150px;
     padding: 10px 20px;
-    color: #000;
+    color: #865634;
     font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
@@ -344,12 +346,13 @@ img {
 
 .show-more-button {
     background: #ffffff;
-    border: #333333;
+    border-radius: 5px;
+    color:#633f26;
     border-radius: 5px;
     cursor: pointer;
     padding: 12px 32px;
     font-size: 1rem;
-    border: solid 1px #333333;
+    border: solid 1px #633f26;
 }
 
 .show-more-button:hover {

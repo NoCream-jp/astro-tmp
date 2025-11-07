@@ -3,7 +3,7 @@ title: "二つ目の記事"
 date: "2025-09-21"
 description: "二つ目の記事．これが追加されず悩んでたがどうやらテンプレページを作らなければいけなかったみたい．"
 slug: "2025092102"
-# thumbnail:"" # public/images/xxx.jpg
+thumbnail: "/images/heroimg.jpeg"
 ---
 
 ### 本文の見出し

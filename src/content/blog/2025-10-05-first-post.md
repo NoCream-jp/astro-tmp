@@ -3,6 +3,7 @@ title: "ページの追加"
 date: "2025-10-05"
 description: "いろいろ変更。ヘッダの文字や記事ページ実装、PostCardの調整など"
 slug: "2025100501"
+thumbnail: "/images/heroimg.jpeg"
 ---
 
 もう少しここのページをきれいにしたい。<br>記事ページのスタイルはまた違う思考がいる気がする。とりあえずこの状況でpushする
