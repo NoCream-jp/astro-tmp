@@ -1,10 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import PostCard from '@/components/PostCard.astro';
 
 const { slug } = Astro.params;
 
 const posts = await getCollection('blog');
+
+// slug の降順（新しいものが上に来る想定）でソート
+posts.sort((a: { slug: any; }, b: { slug: string; }) => b.slug.localeCompare(a.slug));
+
 const post = posts.find((p: { slug: any; }) => p.slug === slug);
 
 if (!post) {
@@ -23,10 +28,10 @@ export async function getStaticPaths() {
 
 <html lang="ja">
   <head>
-    
     <meta charset="UTF-8" />
     <title>{post.data.title}</title>
     <meta name="description" content={post.data.description} />
+    <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <style is:global>
       /* Markdownコンテンツ内の画像スタイル */
@@ -44,22 +49,18 @@ export async function getStaticPaths() {
 
       article {
         max-width: 800px;
-        margin: 60px auto;
-        padding: 40px;
-        border: 1px solid #000;
         border-radius: 8px;
-        background: #fff;
       }
 
       /* サムネイル画像 */
       .thumbnail {
         display: block;
         width: 100%;
-        max-height: 400px;
-        object-fit: contain;           /* はみ出さず切り抜き */
-        border: 1px solid #000;
+        max-height: 350px;
+        object-fit: cover;           /* 親要素を埋めるように調整 */
         border-radius: 6px;
-        margin-bottom: 2rem;
+        /* 下方向に向かって透明になるグラデーションマスクを適用 */
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
       }
 
       h1 {
@@ -87,8 +88,7 @@ export async function getStaticPaths() {
       }
 
       h2, h3 {
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
+		padding: 20px;
         color: var(--theme);
         font-weight: 600;
       }
@@ -152,7 +152,37 @@ export async function getStaticPaths() {
 	.components-container {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		justify-content: center;
+		align-items: flex-start; /* 上端揃えにするとレイアウトが安定します */
+		gap: 5vw;
+		/*
+		gap
+		.left-boxのwidth
+		.right-boxのwidth
+		全部合わせて100以内にする。残りはjustify-content:center;が効いてる
+		 */
+	}
+
+	.left-box {
+		width: 60vw;
+	}
+
+	.left-box article {
+		margin-top: 50px;
+        background-color: #fdfaf6;
+	}
+
+	.left-box article img {
+		margin-bottom: 60px;
+	}
+
+
+	.right-box {
+		width: 30vw;
+	}
+	
+	.right-box .section-heading {
+		margin-top: 30px;
 	}
 
 	.nav-button {
@@ -160,46 +190,76 @@ export async function getStaticPaths() {
 		border: none;
 		font-size: 1.5rem;
 		color: #8b5935;
+		margin-left:30px;
 	}
 
 	.nav-button:hover {
 		cursor: pointer;
 	}
+	@media (max-width: 680px) {
+		.components-container {
+			flex-direction: column;
+			align-items: center; /* 中央揃えに変更 */
+		}
+		.left-box, .right-box {
+			width: 90vw; /* 画面幅に合わせて幅を調整 */
+		}
+		.right-box {
+			margin-top: 40px;
+			border-top: 1px solid #ddd;
+			padding-top: 40px;
+		}
+	}
+
+	
+	
     </style>
   </head>
 
-  <body>
+  <body class="all-blog-view">
     <header class="header">
       <a href="/index.html">
         <button class="nav-button" aria-label="BackToHome">
           <i class="fas fa-arrow-left"></i>
           <span class="sr-only">BackToHome</span>
+		  Back to Home
       </button>
       </a>
     </header>
+
     <div class="components-container">
-      <div class="watching-article">
-        ここに今見ている記事が入る。
+      <div class="left-box">
+		<article>
+		  {post.data.thumbnail && (
+			<img
+			  src={post.data.thumbnail}
+			  alt={`サムネイル画像: ${post.data.title}`}
+			  class="thumbnail"
+			/>
+		  )}
+		  <h1>{post.data.title}</h1>
+		  <em>{post.data.date}</em>
+		  <div>
+			<Content />
+		  </div>
+		</article>
       </div>
-      <div class="all-blogs-view">
-        ここにPostCard一覧が入る。
+      <div class="right-box">
+        <h2 class="section-heading">最新の記事</h2>
+        <div class="posts-container">
+          {posts.map((p: { data: { title: unknown; date: unknown; description: unknown; thumbnail: unknown; }; slug: unknown; }) => (
+            <PostCard
+              title={p.data.title}
+              date={p.data.date}
+              description={p.data.description}
+              slug={p.slug}
+              thumbnail={p.data.thumbnail}
+            />
+          ))}
+        </div>
       </div>
     </div>
 
-    <article>
-      {post.data.thumbnail && (
-        <img
-          src={post.data.thumbnail}
-          alt={`サムネイル画像: ${post.data.title}`}
-          class="thumbnail"
-        />
-      )}
-      <h1>{post.data.title}</h1>
-      <em>{post.data.date}</em>
-      <div>
-        <Content />
-      </div>
-    </article>
   </body>
 
   <!-- <script>

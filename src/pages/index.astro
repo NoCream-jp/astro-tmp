@@ -5,8 +5,11 @@ import { getCollection } from 'astro:content';
 // blog コレクションを取得
 const posts = await getCollection("blog");
 
-// slug 順にソート
-posts.sort((a: { data: { slug: any; }; }, b: { data: { slug: string; }; }) => b.data.slug.localeCompare(a.data.slug));
+// slug の降順（新しいものが上に来る想定）でソート
+posts.sort((a: { slug: any; }, b: { slug: string; }) => b.slug.localeCompare(a.slug));
+
+// 最新記事のURLを生成（記事がない場合はトップページへ）
+const latestPostUrl = posts.length > 0 ? `/blog/${posts[0].slug}/` : '/';
 
 // 記事の数を制限
 const limitedPosts = posts.slice(0, 6);
@@ -55,7 +58,7 @@ const hasMorePosts = posts.length > 6;
                 <div class="w-container">
                     <ul>
                         <li><a href="/profile/">Profile</a></li>
-                        <li><a href="/all-blogs/">Blog</a></li>
+                        <li><a href={latestPostUrl}>Blog</a></li>
                         <li><a href="/all-works/">Works</a></li>
                     </ul>
                 </div>
@@ -90,7 +93,7 @@ const hasMorePosts = posts.length > 6;
 
             <section class="component target" id="posts">
                 <div class="component-container fade-in">
-                    <h2 class="">Blog</h2>
+                    <h2 class="section-heading">Blog</h2>
                     <div class="posts-container">
                         {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                             <PostCard
@@ -103,7 +106,7 @@ const hasMorePosts = posts.length > 6;
                         ))}
                     </div>
                     <div class="show-more">
-                        <a href="/all-blogs/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
+                        <a href={latestPostUrl}><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
                     </div>
                 </div>
                 

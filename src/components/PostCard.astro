@@ -22,8 +22,9 @@ const { title, date, description, slug, thumbnail } = Astro.props;
         display: flex;
         align-items: center; /* 画像とテキストエリアの垂直位置を中央揃え */
         gap: 16px;
-        padding: 16px;
-        min-height: 100px;
+        padding: 20px;
+        min-height: 70px;
+        max-height: 200px;
         box-sizing: border-box;
         background-color: none; /* デフォルトの背景色 */
         border: 1px solid transparent; /* デフォルトで透明なボーダーを設定 */
@@ -37,8 +38,8 @@ const { title, date, description, slug, thumbnail } = Astro.props;
     }
 
     .card .thumbnail {
-        width: 120px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
         object-fit: cover;
         border-radius: 8px;
         flex-shrink: 0;
