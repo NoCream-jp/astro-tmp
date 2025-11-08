@@ -27,6 +27,7 @@ export async function getStaticPaths() {
     <meta charset="UTF-8" />
     <title>{post.data.title}</title>
     <meta name="description" content={post.data.description} />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <style is:global>
       /* Markdownコンテンツ内の画像スタイル */
       article div img {
@@ -137,10 +138,54 @@ export async function getStaticPaths() {
         background: var(--theme);
         color: #000;
       }
+
+	  header{
+		background-color: #ffffff;
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+		height: 70px;
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.components-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.nav-button {
+		background-color: #ffffff;
+		border: none;
+		font-size: 1.5rem;
+		color: #8b5935;
+	}
+
+	.nav-button:hover {
+		cursor: pointer;
+	}
     </style>
   </head>
 
   <body>
+    <header class="header">
+      <a href="/index.html">
+        <button class="nav-button" aria-label="BackToHome">
+          <i class="fas fa-arrow-left"></i>
+          <span class="sr-only">BackToHome</span>
+      </button>
+      </a>
+    </header>
+    <div class="components-container">
+      <div class="watching-article">
+        ここに今見ている記事が入る。
+      </div>
+      <div class="all-blogs-view">
+        ここにPostCard一覧が入る。
+      </div>
+    </div>
+
     <article>
       {post.data.thumbnail && (
         <img
@@ -156,4 +201,9 @@ export async function getStaticPaths() {
       </div>
     </article>
   </body>
+
+  <!-- <script>
+    navIcon.classList.add('fa-arrow-right');
+
+  </script> -->
 </html>
