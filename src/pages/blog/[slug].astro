@@ -31,6 +31,7 @@ export async function getStaticPaths() {
     <meta charset="UTF-8" />
     <title>{post.data.title}</title>
     <meta name="description" content={post.data.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <style is:global>
@@ -172,7 +173,7 @@ export async function getStaticPaths() {
         background-color: #fdfaf6;
 	}
 
-	.left-box article img {
+	.left-box .thumbnail {
 		margin-bottom: 60px;
 	}
 
@@ -239,13 +240,13 @@ export async function getStaticPaths() {
 		  )}
 		  <h1>{post.data.title}</h1>
 		  <em>{post.data.date}</em>
-		  <div>
+		  <div class="article-cont">
 			<Content />
 		  </div>
 		</article>
       </div>
       <div class="right-box">
-        <h2 class="section-heading">最新の記事</h2>
+        <h2 class="section-heading">All posts</h2>
         <div class="posts-container">
           {posts.map((p: { data: { title: unknown; date: unknown; description: unknown; thumbnail: unknown; }; slug: unknown; }) => (
             <PostCard

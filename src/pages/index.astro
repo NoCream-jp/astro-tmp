@@ -67,7 +67,11 @@ const hasMorePosts = posts.length > 6;
 
         <section class="hero">
             <div class="hero-container">
-                <img class="hero-img" src="/images/hero-coffee.png" alt="hero-img">
+                <video class="hero-img" autoplay loop muted playsinline>
+                    {/* public/videos/hero-video.mp4 のように動画ファイルを配置してください */}
+                    <source src="/videos/hero-video-coffee.mp4" type="video/mp4">
+                    お使いのブラウザは動画タグをサポートしていません。
+                </video>
                 <h1>
                     <div class="sentence">Drip-Notes</div>
                     <div class="sentence" id="handwriting-text"></div>
@@ -93,7 +97,7 @@ const hasMorePosts = posts.length > 6;
 
             <section class="component target" id="posts">
                 <div class="component-container fade-in">
-                    <h2 class="section-heading">Blog</h2>
+                    <h2 class="">Blog</h2>
                     <div class="posts-container">
                         {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
                             <PostCard

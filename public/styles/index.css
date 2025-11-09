@@ -127,6 +127,7 @@ body {
     align-items: center;
     aspect-ratio: 1 / 1;
     background-color: #000000;
+    background-color: #8b5935;
     clip-path: circle(50%);
     color: #ffffff;
     display: grid;
@@ -340,7 +341,7 @@ img {
 
 .show-more {
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     left: 50%;
     transform: translatex(-50%);
 }
