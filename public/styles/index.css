@@ -126,7 +126,6 @@ body {
 .footer-sns a {
     align-items: center;
     aspect-ratio: 1 / 1;
-    background-color: #000000;
     background-color: #8b5935;
     clip-path: circle(50%);
     color: #ffffff;

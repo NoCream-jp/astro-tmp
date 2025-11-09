@@ -155,7 +155,7 @@ export async function getStaticPaths() {
 		flex-direction: row;
 		justify-content: center;
 		align-items: flex-start; /* 上端揃えにするとレイアウトが安定します */
-		gap: 5vw;
+		gap: 3vw;
 		/*
 		gap
 		.left-boxのwidth
@@ -170,7 +170,7 @@ export async function getStaticPaths() {
 
 	.left-box article {
 		margin-top: 50px;
-        background-color: #fdfaf6;
+        background-color: #f8f3ed;
 	}
 
 	.left-box .thumbnail {
@@ -255,6 +255,7 @@ export async function getStaticPaths() {
               description={p.data.description}
               slug={p.slug}
               thumbnail={p.data.thumbnail}
+			  isCurrent = {p.slug === slug}
             />
           ))}
         </div>

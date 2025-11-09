@@ -1,9 +1,10 @@
 ---
-const { title, date, description, slug, thumbnail } = Astro.props;
+const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; // isCurrent：表示中ならtrueとなるパラメータ
 ---
 
-<a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;">
-    <article class="card">
+<!-- <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;"> -->
+<a href={"/blog/" + slug + "/"} class:list={["card-link", {"is-current": isCurrent}]}>
+    <div class="card">
         <img class="thumbnail" src={thumbnail} alt="thumbnail" />
         <div class="card-content">
             <h2>
@@ -14,10 +15,23 @@ const { title, date, description, slug, thumbnail } = Astro.props;
                 <p class="date">{date}</p>
             </div>
         </div>
-    </article>
+    </div>
 </a>
 
 <style>
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    
+    /* 現在開いているカードのスタイル(基本的に追加の形にする)*/
+    .card-link.is-current .card{
+        border-left: 4px solid #5e3405;
+        background-color: #ffefe4;
+        
+    }
+
     .card {
         display: flex;
         align-items: center; /* 画像とテキストエリアの垂直位置を中央揃え */
