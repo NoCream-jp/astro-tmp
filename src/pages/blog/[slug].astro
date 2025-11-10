@@ -140,77 +140,65 @@ export async function getStaticPaths() {
         color: #000;
       }
 
-	  header{
-		background-color: #ffffff;
-		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-		height: 70px;
-		padding: 10px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	
-	.components-container {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start; /* 上端揃えにするとレイアウトが安定します */
-		gap: 3vw;
-		/*
-		gap
-		.left-boxのwidth
-		.right-boxのwidth
-		全部合わせて100以内にする。残りはjustify-content:center;が効いてる
-		 */
-	}
-
-	.left-box {
-		width: 60vw;
-	}
-
-	.left-box article {
-		margin-top: 50px;
-        background-color: #f8f3ed;
-	}
-
-	.left-box .thumbnail {
-		margin-bottom: 60px;
-	}
-
-
-	.right-box {
-		width: 30vw;
-	}
-	
-	.right-box .section-heading {
-		margin-top: 30px;
-	}
-
-	.nav-button {
-		background-color: #ffffff;
-		border: none;
-		font-size: 1.5rem;
-		color: #8b5935;
-		margin-left:30px;
-	}
-
-	.nav-button:hover {
-		cursor: pointer;
-	}
-	@media (max-width: 680px) {
+		.sub-header{
+			background-color: #ffffff;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+			height: 70px;
+			padding: 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
 		.components-container {
-			flex-direction: column;
-			align-items: center; /* 中央揃えに変更 */
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: flex-start; /* 上端揃えにするとレイアウトが安定します */
+			gap: 3vw;
+			/*
+			gap
+			.left-boxのwidth
+			.right-boxのwidth
+			全部合わせて100以内にする。残りはjustify-content:center;が効いてる
+			*/
 		}
-		.left-box, .right-box {
-			width: 90vw; /* 画面幅に合わせて幅を調整 */
+
+		.left-box {
+			width: 60vw;
 		}
+
+		.left-box article {
+			margin-top: 50px;
+			background-color: #f8f3ed;
+		}
+
+		.left-box .thumbnail {
+			margin-bottom: 60px;
+		}
+
 		.right-box {
-			margin-top: 40px;
-			border-top: 1px solid #ddd;
-			padding-top: 40px;
+			width: 25vw;
 		}
-	}
+		
+		.right-box .section-heading {
+			margin-top: 30px;
+		}
+
+		@media (max-width: 680px) {
+			.components-container {
+				flex-direction: column;
+				align-items: center; /* 中央揃えに変更 */
+			}
+			.left-box, .right-box {
+				width: 90vw; /* 画面幅に合わせて幅を調整 */
+			}
+			.right-box {
+				margin-top: 40px;
+				border-top: 1px solid #ddd;
+				padding-top: 40px;
+			}
+		}
 
 	
 	
@@ -218,7 +206,7 @@ export async function getStaticPaths() {
   </head>
 
   <body class="all-blog-view">
-    <header class="header">
+    <header class="sub-header">
       <a href="/index.html">
         <button class="nav-button" aria-label="BackToHome">
           <i class="fas fa-arrow-left"></i>

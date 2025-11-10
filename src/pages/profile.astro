@@ -2,66 +2,7 @@
 <html lang="ja">
 
     <head>
-        <style>
-            /* 基準となるフォントサイズを設定 */
-            html {
-                font-size: 100%; /* ユーザーのブラウザ設定（通常16px）を基準にする */
-            }
-            body {
-                font-size: 1.125rem; /* 18px相当。サイト全体の基本フォントサイズを少し大きくする */
-                line-height: 1.6; /* 行間を調整して読みやすくする */
-            }
-
-            h1 {
-                font-size: 5rem; /* 80px相当 */
-                color: #999999;
-            }
-            .profile-header-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: center; /* 要素を中央に寄せる */
-                align-items: center;
-                gap: 20%; /* 要素間の余白を指定 */
-            }
-            .profile-img {
-                width: 300px;
-                height: 300px;
-                border-radius: 10%;
-                object-fit: cover; /* 縦横比を維持したままトリミング */
-            }
-            .profile-contents-container {
-                padding-top: 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* .profile-itemを中央に配置 */
-                gap: 2rem; /* 各項目の間の余白 */
-            }
-            /* 2つ目以降の.profile-itemに上線と余白を追加 */
-            .profile-contents-container > div + div{
-                border-top: 1px solid #dddddd;
-                padding-top: 2rem;
-            }
-            .profile-item {
-                display:flex;
-                flex-direction: row;
-                align-items: center;
-                width: 70%; /* 全体の幅を調整 */
-                max-width: 700px; /* 最大幅を設定 */
-            }
-            .profile-item-label {
-                color: #aaaaaa;
-                flex: 1; /* スペースを均等に分割 */
-                text-align: right; /* テキストを右寄せ */
-                padding-right: 2rem; /* 縦線との余白 */
-            }
-            .profile-item-value {
-                flex: 1; /* スペースを均等に分割 */
-                padding-left: 2rem; /* 縦線との余白 */
-                border-left: 1px solid #dddddd; /* 中央の縦線 */
-                word-break: break-all; /* 長い単語がはみ出さないように改行 */
-            }
-
-        </style>
+        <link rel="stylesheet" href="/styles/index.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DripNotes</title>
@@ -78,6 +19,15 @@
     </head>
 
     <body>
+        <header class="sub-header">
+            <a href="/index.html">
+                <button class="nav-button" aria-label="BackToHome">
+                  <i class="fas fa-arrow-left"></i>
+                  <span class="sr-only">BackToHome</span>
+                  Back to Home
+              </button>
+              </a>
+        </header>
         <div class="profile-header-container">
             <h1>Profile</h1>
             <img src="/images/heroimg.jpeg" alt="" class="profile-img">

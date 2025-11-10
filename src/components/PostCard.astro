@@ -28,7 +28,7 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
     /* 現在開いているカードのスタイル(基本的に追加の形にする)*/
     .card-link.is-current .card{
         border-left: 4px solid #5e3405;
-        background-color: #ffefe4;
+        background-color: #f3ece8;
         
     }
 
@@ -61,10 +61,10 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
     
     .card-content {
         display: flex;
-        flex-direction: column; /* 中の要素 (titleとbottom-row) を縦に並べる */
-        justify-content: space-between; /* titleを上、bottom-rowを下に配置 */
+        flex-direction: column;
+        justify-content: space-between;
         flex-grow: 1;
-        align-self: stretch; /* cardの高さ一杯に広がる */
+        align-self: stretch;
         min-width: 0;
         padding: 4px 0; /* 上下に少し余白を持たせる */
     }

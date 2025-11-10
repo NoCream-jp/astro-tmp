@@ -62,7 +62,7 @@ body {
     border: solid 1px #111111;
     height: 150px; /* フッター全体の高さ */
     overflow: hidden; /* 内容が丸みを超えないようにする */
-    padding: 100px 0; /* フッター内の余白 */
+    padding: 70px 0; /* フッター内の余白 */
     position: relative;
     text-align: center;
     width: 100%;
@@ -139,13 +139,10 @@ body {
 .header {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
-    /* border-bottom-left-radius: 100% 75px;
-    border-bottom-right-radius: 100% 75px; */
     color: #ffffff;
     height: 100px;
     overflow: hidden;
     padding: 10px 0;
-    /* padding-bottom: 30px; */
     position: relative;
     text-align: center;
     width: 100%;
@@ -387,7 +384,7 @@ img {
     font-size: 1.5rem;
     margin-top: 0;
     padding-left: 1rem;
-    border-left: 5px solid #8b5935;
+    /* border-left: 5px solid #8b5935; */
 }
 
 /* ===============================================
@@ -404,7 +401,7 @@ img {
 /* 2枚目以降のカードにのみ適用 */
 .posts-container > a + a {
     position: relative; /* 擬似要素(罫線)の基準位置にする */
-    margin-top: 3rem;    /* カードの外側に余白を作成 (クリック範囲は広がらない) */
+    margin-top: 0rem;    /* カードの外側に余白を作成 (クリック範囲は広がらない) */
 }
 
 /* カード間の罫線を描画するための擬似要素 */
@@ -412,10 +409,33 @@ img {
     content: '';
     position: absolute;
     /* margin-topで空けた空間の中央に線を配置 */
-    top: -1.5rem;
-    left: 0;
-    right: 0;
+    top: -0rem;
+    left: 50%; /* 1. 親要素の中央へ移動 */
+    transform: translateX(-50%); /* 2. 要素自身の幅の半分だけ戻す */
     height: 1px;
+    width: 80vw;
     background-color: #dddddd;
     pointer-events: none; /* 罫線がクリックされるのを防ぐ */
+}
+
+/* --------------共通部分---------------- */
+.sub-header{
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    height: 70px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button {
+    background-color: #ffffff;
+    border: none;
+    font-size: 1.5rem;
+    color: #8b5935;
+    margin-left:30px;
+}
+.nav-button:hover {
+    cursor: pointer;
 }
