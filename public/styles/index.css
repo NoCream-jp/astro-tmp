@@ -19,7 +19,7 @@ body {
     margin: 0;
 }
 
-.cardcontent .date { /* カードの中の文章の余白を削りたい */
+.cardcontent .date {
     margin: 0;
     padding: 0;
 }
