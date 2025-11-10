@@ -2,22 +2,6 @@
 const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; // isCurrent：表示中ならtrueとなるパラメータ
 ---
 
-<!-- <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;"> -->
-<a href={"/blog/" + slug + "/"} class:list={["card-link", {"is-current": isCurrent}]}>
-    <div class="card">
-        <img class="thumbnail" src={thumbnail} alt="thumbnail" />
-        <div class="card-content">
-            <h2>
-                {title}
-            </h2>
-            <div class="bottom-row">
-                <p class="desc">{description}</p>
-                <p class="date">{date}</p>
-            </div>
-        </div>
-    </div>
-</a>
-
 <style>
     .card-link {
         text-decoration: none;
@@ -46,7 +30,7 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         transition: background-color 0.4s ease, border-color 0.4s ease; /* ホバー時のアニメーション */
     }
 
-    .card:hover {
+    .card-link:hover .card {
         background-color: #ffefe4;
         border-color: #d0844e; /* ホバー時にボーダーの色だけを変更 */
     }
@@ -77,8 +61,8 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
     }
     
     .card h2 { /* title */
-        color: #444444;
-        font-size: 1.4rem;
+        color: #797979;
+        font-size: 1.2rem;
         margin: 0;
         white-space: nowrap;
         overflow: hidden;
@@ -103,3 +87,19 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         flex-shrink: 0; /* 日付が潰れないようにする */
     }
 </style>
+
+<!-- <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;"> -->
+<a href={"/blog/" + slug + "/"} class:list={["card-link", {"is-current": isCurrent}]}>
+    <div class="card">
+        <img class="thumbnail" src={thumbnail} alt="thumbnail" />
+        <div class="card-content">
+            <h2>
+                {title}
+            </h2>
+            <div class="bottom-row">
+                <p class="desc">{description}</p>
+                <p class="date">{date}</p>
+            </div>
+        </div>
+    </div>
+</a>
