@@ -36,112 +36,28 @@ const hasMorePosts = posts.length > 6;
 
     <body>
         <header class="header">
-            <div class="header-container w-container">
+            <div class="header-container">
                 <div class="header-left">
-                    <a href="/">
-                        <img class="logo" src="/images/icon.png" alt="header_icon" width="50" height="50">
-                    </a>
-                </div>
-                <div class="header-center appear">
-                    <a href="index.html" class="sentence">
-                        Drip-Notes
-                    </a>
+                    <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-home"></i></a>
                 </div>
                 <div class="header-right">
-                    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-                        <i class="fas fa-bars"></i>
-                        <span class="sr-only">MENU</span>
-                    </button>
+                    <a href="/" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-book"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="制作物"><i class="fas fa-tools"></i></a>
+                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fas fa-share-square"></i></a>
                 </div>
-            </div>
-            <nav class="overlay-nav" id="overlay-nav">
-                <div class="w-container">
-                    <ul>
-                        <li><a href="/profile/">Profile</a></li>
-                        <li><a href={latestPostUrl}>Blog</a></li>
-                        <li><a href="/all-works/">Works</a></li>
-                    </ul>
-                </div>
-            </nav>
+                <button class="nav-button">
+                    <i class="fas fa-bars"></i>
+                </button>
         </header>
 
-        <section class="hero">
-            <div class="hero-container">
-                <video class="hero-img" autoplay loop muted playsinline>
-                    {/* public/videos/hero-video.mp4 のように動画ファイルを配置してください */}
-                    <source src="/videos/hero-video-coffee.mp4" type="video/mp4">
-                    お使いのブラウザは動画タグをサポートしていません。
-                </video>
-                <h1>
-                    <div class="sentence">Drip-Notes</div>
-                    <div class="sentence" id="handwriting-text"></div>
-                </h1>
-            </div>
-        </section>
-
         <main>
-            <section class="component" id="profile">
-                <div class="component-container fade-in">
-                    <h2 class="profile-heading">Profile</h2>
-                    <p class="profile-text">
-                        ネットワーク、ブロックチェーン、セキュリティ、web開発を学んでいる学生です。
-                    </p>
-                    <div class="show-more">
-                        <a href="/profile/"><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="component target bg-gray" id="posts">
-                <div class="component-container fade-in">
-                    <h2 class="">Blog</h2>
-                    <div class="posts-container">
-                        {limitedPosts.map((post: { data: { title: any; date: any; description: any; thumbnail: any; }; slug: any; }) => (
-                            <PostCard
-                                title={post.data.title}
-                                date={post.data.date}
-                                description={post.data.description}
-                                slug={post.slug}
-                                thumbnail={post.data.thumbnail}
-                            />
-                        ))}
-                    </div>
-                    <div class="show-more">
-                        <a href={latestPostUrl}><button class="show-more-button">show more <span class="arrow">↗</span></button></a>
-                    </div>
-                </div>
-                
-            </section>
-
-            <section class="component" id="contact">
-                <div class="component-container fade-in">
-                    <h2 class="">Works</h2>
-                    <div class="show-more">
-                        <a href="/all-works/"><button class="show-more-button">show more ↗</button></a>
-                    </div>
-                </div>
-            </section>
+            <section class="profile"></section>
+            <section class="blog"></section>
+            <section class="works"></section>
         </main>
-
-        <footer class="footer fade-in">
-            <div class="footer-container w-container">
-                <div class="sentence">
-                    Drip-Notes
-                </div>
-                <div class="footer-row">
-                    <ul class="footer-sns">
-                        <li><a href="https://x.com/sXMN1au45a68174"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="https://github.com/NoCream-jp" target="blank" rel="noopener"><i class="fab fa-github"></i></a></li>
-                        <!-- <li><a href="https://atcoder.jp/users/Caffeineholic" target="blank" rel="noopener"><img src="C:my-astro-site\public\images\AtCoder_logo_white.png" alt="AtCoder logo" style="background-color: #333;"></a></li> -->
-                    </ul>
-                    <ul class="footer-menu">
-                        <li><a class="site" href="#">Contact ▷</a></li>
-                        <li><a class="site" href="#">Assets | Credits ▷</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
 
         <script src="/scripts/indexScript.js" defer></script>
     </body>
+
 </html>

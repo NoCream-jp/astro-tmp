@@ -1,443 +1,71 @@
-.bg-gray {
-    background-color: #fdfaf6;
-}
-
-
-/* 768px以上で横並び */
-.blog {
-    background-color: #eeeeee;
-    border-radius: 15px;
-    margin: 30px;
-    padding: 20px;
-}
-
-/* 共通 */
 body {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Noto Sans JP, sans-serif;
+    background-color: #eeeeee;
     margin: 0;
 }
 
-.cardcontent .date {
-    margin: 0;
-    padding: 0;
-}
-
-.component {
-    margin-bottom: 100px;
-}
-
-.component-container {
-    /* border: 1px solid;
-    border-radius: 15px; */
-    padding: 20px;
-    padding-bottom: 80px;
-    position: relative;
-    /* margin-bottom: 100px; */
-}
-
-.cursive {
-    color: inherit;
-    font-family: "Dancing Script", cursive;
-}
-
-/* 初期状態：透明で少し下に位置 */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.9s ease, transform 1.0s ease;
-}
-
-/* 表示状態：透明度を1にし、元の位置に移動 */
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* footer */
-.footer {
-    background-color: #633f26;
-    color: white;
-    border: solid 1px #111111;
-    height: 150px; /* フッター全体の高さ */
-    overflow: hidden; /* 内容が丸みを超えないようにする */
-    padding: 70px 0; /* フッター内の余白 */
-    position: relative;
-    text-align: center;
-    width: 100%;
-}
-
-.footer .cursive {
-    font-size: 40px;
-    text-align: center;
-}
-
-.footer-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.footer-container .sentence {
-    font-size: clamp(25px, 5vw, 55px);
-}
-
-.footer-menu {
-    font-size: clamp(10px, 5vw, 20px);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer-row {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
-@media (min-width: 768px) {
-    .footer-row {
-        align-items: flex-start;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .footer-sns,
-    .footer-menu {
-        flex-direction: column;
-    }
-}
-
-.footer-sns {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer-sns a {
-    align-items: center;
-    aspect-ratio: 1 / 1;
-    background-color: #8b5935;
-    clip-path: circle(50%);
-    color: #ffffff;
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    width: 36px;
-}
-
-/* ヘッダー */
 .header {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
-    color: #ffffff;
-    height: 100px;
-    overflow: hidden;
-    padding: 10px 0;
-    position: relative;
-    text-align: center;
-    width: 100%;
-
-    position: sticky; /* スクロールに追従し固定 */
-    top: 0; /* 画面の一番上で固定 */
-    z-index: 100; /* 他の要素より手前に表示 */
-}
-
-.header .sentence {
-    color: #5e3405;
-    font-size: 30px;
-    text-decoration: none;
+    margin: 30px 10px;
+    height: 90px;
+    border-radius: 70px;
+    padding: 0 20px; /* 左右のパディングを追加 */
 }
 
 .header-container {
-    align-items: center;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* 両端に寄せる */
+    align-items: center; /* 垂直方向中央 */
     height: 100%;
-    justify-content: space-between;
-}
-
-.header-left {
-    align-items: center;
-    display: flex;
-}
-
-.header-left img {
-    margin-right: 10px;
-}
-
-.header-center {
-    flex: 1;
-    text-align: left;
+    box-sizing: border-box; /* paddingを高さに含める */
 }
 
 .header-right {
-    flex: 0 0 auto;
-}
-
-/* heroセクション */
-.hero {
-    align-items: center;
-    /* align-items: center; */ /* hero-containerがコンテンツを管理するため、hero自体のalign-itemsは不要 */
-    background-color: #ffffff;
-    min-height: 100vh;
-    position: relative;
-    /* text-align: center; */ /* hero-containerがコンテンツを管理するため、hero自体のtext-alignは不要 */
-}
-
-.hero-container {
-
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    z-index: 1;
-}
-
-.hero-container .sentence {
-    font-size: clamp(40px, 8vw, 80px);
-    align-self: flex-start;
-    color: #eeeeee;
-}
-
-.hero-container h1 {
-    position: absolute; /* hero-container内で絶対配置 */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 中央に配置 */
-    z-index: 2; /* 画像より手前に表示 */
-    color: #ffffff; /* 画像の上でも読みやすいように白に設定 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字の視認性を高める影 */
-    margin: 0; /* h1のデフォルトマージンを削除 */
-}
-
-.hero-img {
-    filter: blur(8px);
-    object-fit: contain;
-    width:100%;
-    position: absolute; /* hero-container内で絶対配置 */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 親要素いっぱいに画像を拡大・縮小し、足りない部分は切り取る */
-    z-index: 0; /* 文字の背面に表示 */
-    display: block; /* 画像の余白をなくす */
-}
-
-.hero .sentence {
-    text-shadow: #eeeeee;
-}
-
-img {
-    display: block;
-}
-
-.logo {
-    height: 80px;
-    width: 80px;
-}
-
-/* ハンバーガーメニュー */
-.nav-toggle {
-    align-items: center;
-    background: none;
-    border: none;
-    color: #8b5935;
-    cursor: pointer;
     display: flex;
-    font-size: 1.5rem;
-    justify-content: center;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    z-index: 12;
+    flex-direction: row;
+    align-items: center; /* 垂直方向中央 */
+    gap: 20px; /* アイコンの間隔を調整 */
 }
 
-/* オーバーレイナビ */
-.overlay-nav {
-    align-items: center;
-    /* background: rgba(255, 255, 255, 1); */
-    color: #633f26;
-    background-color: #ffffff; /* ベースの背景色 */
-    background-image:
-        repeating-linear-gradient(to right, rgba(99, 63, 38, 0.10) 0, rgba(99, 63, 38, 0.10) 1px, transparent 1px, transparent 20px), /* 縦線 */
-        repeating-linear-gradient(to bottom, rgba(99, 63, 38, 0.10) 0, rgba(99, 63, 38, 0.10) 1px, transparent 1px, transparent 20px); /* 横線 */
-    background-size: 20px 20px; /* 格子のサイズ */
-
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    pointer-events: none;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transform: translateX(100%);
-    transition: transform 0.4s ease-in-out;
-    width: 50vw;
-    z-index: 11;
-    box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15); /* 左側に影を追加 */
+.header-right .share {
+    color: #bbb;
 }
 
-.overlay-nav.active {
-    transform: translateX(0);
-    pointer-events: auto;
-}
-
-.overlay-nav a {
-    width: 150px;
-    padding: 10px 20px;
-    color: #865634;
-    font-size: 2rem;
-    font-weight: bold;
+.header-icon-link {
+    color: #555;
     text-decoration: none;
-}
-
-.overlay-nav ul {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.profile-heading {
-    font-size: 24px;
-    margin-bottom: 50px;
-}
-
-.bottom-border {
-    border-bottom: 1px solid #cccccc;
-}
-
-.site {
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.w-container {
-    margin: auto;
-    width: min(92%, 1500px);
-}
-
-#handwriting-text {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 1.5rem;
-    white-space: nowrap;
-}
-
-.show-more {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translatex(-50%);
-}
-
-.show-more-button {
-    background: #ffffff;
-    border-radius: 5px;
-    color:#633f26;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 12px 32px;
-    font-size: 1rem;
-    border: solid 1px #633f26;
-}
-
-.show-more-button:hover {
-    background: #633f26;
-    color: #ffffff;
-    transition: background-color 0.3s ease
-}
-
-.highlight{
-    color: #6effd8;
-}
-
-/* ヘッダータイトルを初期状態で非表示にする */
-.header-center.appear {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* スムーズに表示するためのアニメーション */
-}
-
-/* visibleクラスが付与されたら表示する */
-.header-center.appear.visible {
-    opacity: 1;
-}
-
-.profile-text {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-/* 共通のセクション見出しスタイル */
-.section-heading {
-    font-size: 1.5rem;
-    margin-top: 0;
-    padding-left: 1rem;
-    /* border-left: 5px solid #8b5935; */
-}
-/* ===============================================
-   ブログ記事カード (PostCard) 関連のスタイル
-   =============================================== */
-
-/* カードリスト全体のコンテナ */
-.posts-container {
-    display: flex;
-    flex-direction: column; /* カードを縦に並べる */
-}
-
-.posts-container > a + a {
-    position: relative;
-    margin:0.25rem;
-}
-
-/* 2枚目以降のカードにのみ適用 罫線を2枚目以降のbefore疑似要素として描く */
-/* .posts-container > a + a {
-    position: relative;
-    margin-top: 0rem;
-    }
-
-.posts-container > a + a::before {
-    content: '';
-    position: absolute;
-    top: -0rem;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 1px;
-    width: 80vw;
-    background-color: #dddddd;
-    pointer-events: none;
-} */
-
-
-/* --------------共通部分---------------- */
-.sub-header{
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    height: 70px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
+}
+
+.header-icon-link:hover {
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; /* アイコンの色を白に */
 }
 
 .nav-button {
-    background-color: #ffffff;
-    border: none;
-    font-size: 1.5rem;
-    color: #8b5935;
-    margin-left:30px;
+    display: none;
 }
-.nav-button:hover {
-    cursor: pointer;
+
+@media (max-width: 392px) {
+    .nav-button {
+        color: #555;
+        display: flex; /* 狭いときのみ表示 */
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1.15rem;
+        position: relative;
+        align-items: center;
+    }
+    .header-right {
+        display: none;
+    }
 }
