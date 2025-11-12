@@ -23,15 +23,16 @@ const hasMorePosts = posts.length > 6;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DripNotes</title>
         <link rel="stylesheet" href="/styles/index.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap"> -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Oxanium:wght@200..800&family=Tilt+Neon&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Tilt+Neon&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -46,16 +47,32 @@ const hasMorePosts = posts.length > 6;
                     <a href="/" class="header-icon-link" aria-label="制作物"><i class="fas fa-tools"></i></a>
                     <a href="/" class="header-icon-link share" aria-label="共有"><i class="fas fa-share-square"></i></a>
                 </div>
-                <button class="nav-button">
+                <button class="nav-button" id="nav-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
+                <nav class="header-overlay-nav" id="overlay-nav">
+                    <div class="nav-list">
+                        <a href="/" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
+                        <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-book"></i></a>
+                        <a href="/" class="header-icon-link" aria-label="制作物"><i class="fas fa-tools"></i></a>
+                        <a href="/" class="header-icon-link share" aria-label="共有"><i class="fas fa-share-square"></i></a>
+                    </div>
+                </nav>
         </header>
 
         <main>
-            <section class="profile"></section>
-            <section class="blog"></section>
-            <section class="works"></section>
+            <section class="section-profile">
+                <h2 class="section-title">About</h2>
+            </section>
+            <section class="section-blog">
+                <h2 class="section-title">Blog</h2>
+            </section>
+            <section class="section-works">
+                <h2 class="section-title">Works</h2></h2>
+            </section>
         </main>
+
+        <footer class="footer"></footer>
 
         <script src="/scripts/indexScript.js" defer></script>
     </body>
