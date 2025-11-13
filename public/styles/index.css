@@ -1,3 +1,5 @@
+/* ========== 全体共有スタイルここから ========== */
+
 h2 {
     margin: 0;
 }
@@ -6,6 +8,10 @@ body {
     background-color: #eeeeee;
 }
 
+/* ========== 全体共有スタイルここまで ========== */
+
+
+
 /* ==========headerここから========== */
 
 .header {
@@ -13,7 +19,6 @@ body {
     top: 30px;
     left: 30px;
     right: 30px;
-    z-index: 100;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     /* background-color: #ffffff; */
@@ -25,11 +30,6 @@ body {
     transition: background-color 0.3s ease-in-out;
     backdrop-filter: blur(5px);
 }
-
-/*
-.header .scrolled {
-}
-*/
 
 .header-container {
     display: flex;
@@ -70,29 +70,27 @@ body {
 
 .nav-button {
     display: none;
-    position: relative; /* z-indexを有効にするため */
-    z-index: 2;       /* オーバーレイメニュー(100)より手前に表示 */
+    z-index: 3;      /* オーバーレイ(z-index: 2)より手前に表示 */
+    top: 50px;       /* ヘッダーの上辺から(30px + (90px - 50px)/2) */
+    right: 50px;     /* ヘッダーの右辺から(30px + 20px) */
+    width: 50px;
+    height: 50px;
+    color: #555;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.15rem;
+    position: fixed; /* 画面を基準に位置を固定 */
+    display: none;
+    align-items: center;
 }
-
 @media (max-width: 447px) {
     .nav-button {
-        color: #555;
         display: flex; /* 狭いときのみ表示 */
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        font-size: 1.15rem;
-        position: relative;
-        align-items: center;
     }
     .header-right {
         display: none;
     }
-}
-
-.header .scrolled {
-    background-color: rgba(255, 255, 255, 0.0);
-    /* backdrop-filter: blur(1px); */
 }
 
 .header-overlay-nav {
@@ -103,12 +101,13 @@ body {
     height: 100vh; /* 画面全体の高さ */
     background: rgba(255, 255, 255, 0.95); /* 半透明の白い背景 */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center; /* 水平中央揃え */
     align-items: center;    /* 垂直中央揃え */
     opacity: 0; /* 初期状態では透明で見えない */
     pointer-events: none; /* 初期状態ではクリックできない */
     transition: opacity 0.4s ease-in-out; /* スムーズな表示/非表示アニメーション */
-    z-index: 1; /* 他の要素より手前に表示 */
+    z-index: 2; /* 他の要素より手前に表示 */
 }
 
 .header-overlay-nav.active {
@@ -124,6 +123,7 @@ body {
 /* ==========headerここまで========== */
 
 
+
 /* ==========sectionここから========== */
 
 main {
@@ -135,14 +135,12 @@ main {
 section {
     width: 75vw;
     background-color: #fff;
-    /* min  */
     border-radius: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
     padding: 30px;
     height: 200px;/* 固定するかどうか決める */
 }
-
 
 .section-profile {
     /*
@@ -161,6 +159,8 @@ section {
 }
 /* ==========sectionここまで========== */
 
+
+
 /* ==========footerここから========== */
 .footer {
     background-color: none;
@@ -172,8 +172,11 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: none;
-    gap: 15px; /* アイコン間の余白 */
+    gap: 30px; /* アイコン間の余白 */
+    flex-wrap: wrap; /* アイコンを折り返して複数行にする */
+    /* アイコン4つ分の幅をコンテナの最大幅として設定 */
+    max-width: 700px;
+    margin: 0 auto; /* コンテナ自体を中央に配置 */
 }
 
 .footer-icon-link {
@@ -183,18 +186,33 @@ section {
     display: inline-flex; /* アイコンを中央揃えにするために flex を使用 */
     align-items: center;
     justify-content: center;
-    width: 50px; /* 幅 */
-    height: 50px; /* 高さ */
+    width: 90px; /* 幅 */
+    height: 90px; /* 高さ */
     border-radius: 50%; /* 円形にする */
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(5px);
-}
-
-.footer-icon-link:hover {
+}.footer-icon-link:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff; /* アイコンの色を白に */
 }
 
+.footer-icon-link img {
+    transition: background-color 0.3s ease;
+    width: 90%; /* こいつは親のfooter-icon-linkの幅、高さに合わせる */
+    height: 90%;
+    object-fit: cover; /* 画像の比率を保ったままコンテナを埋める */
+    border-radius: 50%; /* 画像自体も円形にクリップする */
+    filter: brightness(0%);
+}.footer-icon-link:hover {
+    img {
+        /* filter: invert(100%); */
+        filter: brightness(0%) invert(100%);
+    }
+}
 
+.footer-icon-link i {
+    /* アイコンのサイズを調整 */
+    font-size: 170%;
+}
 /* ==========footerここまで========== */
