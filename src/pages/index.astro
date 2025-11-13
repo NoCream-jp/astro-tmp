@@ -24,8 +24,8 @@ const hasMorePosts = posts.length > 6;
         <title>DripNotes</title>
         <link rel="stylesheet" href="/styles/index.css">
         <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap"> -->
-        
-        <!-- font awesome -->
+
+        <!-- font awesome フォント持ってくる -->
         <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
@@ -39,6 +39,16 @@ const hasMorePosts = posts.length > 6;
     </head>
 
     <body>
+        <!-- footerで利用。切り抜き用の図形を定義 (通常は body の開始タグ直後などに置く) -->
+        <svg width="0" height="0">
+            <defs>
+            <clipPath id="rounded-triangle-clip" clipPathUnits="objectBoundingBox">
+                <!-- ↓これが角丸三角形のパスデータ -->
+                <path d="M0.1,0 C0.04,0,0,0.04,0,0.1 L0,0.9 C0,0.96,0.04,1,0.1,1 L0.8,0.6 C0.86,0.57,0.86,0.43,0.8,0.4 L0.1,0 Z"></path>
+            </clipPath>
+            </defs>
+        </svg>
+
         <header class="header">
             <div class="header-container">
                 <div class="header-left">
@@ -47,7 +57,7 @@ const hasMorePosts = posts.length > 6;
                 <div class="header-right">
                     <a href="/" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
                     <a href="/" class="header-icon-link" aria-label="ブログ"><i class="fas fa-pen-nib"></i></a>
-                    <a href="/" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-laptop-code"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-cube"></i></a>
                     <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
                 <button class="nav-button" id="nav-toggle">
@@ -80,6 +90,7 @@ const hasMorePosts = posts.length > 6;
                 <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <div class="rounded-triangle"></div>
             </div>
         </footer>
 
