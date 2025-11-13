@@ -24,7 +24,11 @@ const hasMorePosts = posts.length > 6;
         <title>DripNotes</title>
         <link rel="stylesheet" href="/styles/index.css">
         <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap"> -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+        
+        <!-- font awesome -->
+        <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,20 +36,19 @@ const hasMorePosts = posts.length > 6;
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Oxanium:wght@200..800&family=Tilt+Neon&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Tilt+Neon&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <header class="header">
             <div class="header-container">
                 <div class="header-left">
-                    <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-home"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fa-solid fa-house"></i></a>
                 </div>
                 <div class="header-right">
                     <a href="/" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
-                    <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-book"></i></a>
-                    <a href="/" class="header-icon-link" aria-label="制作物"><i class="fas fa-tools"></i></a>
-                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fas fa-share-square"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="ブログ"><i class="fas fa-pen-nib"></i></a>
+                    <a href="/" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-laptop-code"></i></a>
+                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
                 <button class="nav-button" id="nav-toggle">
                     <i class="fas fa-bars"></i>
@@ -68,11 +71,17 @@ const hasMorePosts = posts.length > 6;
                 <h2 class="section-title">Blog</h2>
             </section>
             <section class="section-works">
-                <h2 class="section-title">Works</h2></h2>
+                <h2 class="section-title">Works</h2>
             </section>
         </main>
 
-        <footer class="footer"></footer>
+        <footer class="footer">
+            <div class="footer-icons">
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
 
         <script src="/scripts/indexScript.js" defer></script>
     </body>

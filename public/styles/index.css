@@ -5,6 +5,9 @@ h2 {
 body {
     background-color: #eeeeee;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ==========headerここから========== */
@@ -17,18 +20,20 @@ body {
     z-index: 100;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: rgba(255, 255, 255, 0.8);
     margin: 0; /* position: fixed のため margin は不要に */
     height: 90px;
     border-radius: 70px;
     padding: 0 20px; /* 左右のパディングを追加 */
     transition: background-color 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
 }
 
-.header.scrolled {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px); /* すりガラス効果を少し弱める */
+/*
+.header .scrolled {
 }
+*/
 
 .header-container {
     display: flex;
@@ -127,7 +132,9 @@ body {
 /* ==========sectionここから========== */
 
 section {
+    width: 75vw;
     background-color: #fff;
+    /* min  */
     border-radius: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
@@ -151,3 +158,40 @@ section {
     color: #555;
 }
 /* ==========sectionここまで========== */
+
+/* ==========footerここから========== */
+.footer {
+    background-color: none;
+    margin: 30px 40px;
+    padding: 20px 30px;
+}
+
+.footer-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+    gap: 15px; /* アイコン間の余白 */
+}
+
+.footer-icon-link {
+    color: #555; /* アイコンの色を白に */
+    background-color: #fff;
+    text-decoration: none;
+    display: inline-flex; /* アイコンを中央揃えにするために flex を使用 */
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* 幅 */
+    height: 50px; /* 高さ */
+    border-radius: 50%; /* 円形にする */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.footer-icon-link:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; /* アイコンの色を白に */
+}
+
+/* ==========footerここまで========== */
