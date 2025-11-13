@@ -99,7 +99,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh; /* 画面全体の高さ */
-    background: rgba(255, 255, 255, 0.95); /* 半透明の白い背景 */
+    background: rgba(255, 255, 255, 1.0); /* 半透明の白い背景 */
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* 水平中央揃え */
@@ -120,6 +120,11 @@ body {
     flex-direction: column; /* アイコンを縦に並べる */
     gap: 2rem; /* アイコン間の余白 */
 }
+
+.nav-list .share {
+    color: #bbb;
+}
+
 /* ==========headerここまで========== */
 
 
@@ -139,7 +144,7 @@ section {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
     padding: 30px;
-    height: 200px;/* 固定するかどうか決める */
+    height: 300px;/* 固定するかどうか決める */
 }
 
 .section-profile {
@@ -186,8 +191,8 @@ section {
     display: inline-flex; /* アイコンを中央揃えにするために flex を使用 */
     align-items: center;
     justify-content: center;
-    width: 90px; /* 幅 */
-    height: 90px; /* 高さ */
+    width: 80px; /* 幅 */
+    height: 80px; /* 高さ */
     border-radius: 50%; /* 円形にする */
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -199,20 +204,20 @@ section {
 
 .footer-icon-link img {
     transition: background-color 0.3s ease;
-    width: 90%; /* こいつは親のfooter-icon-linkの幅、高さに合わせる */
-    height: 90%;
+    width: 100%; /* こいつは親のfooter-icon-linkの幅、高さに合わせる */
+    height: 100%;
     object-fit: cover; /* 画像の比率を保ったままコンテナを埋める */
     border-radius: 50%; /* 画像自体も円形にクリップする */
-    filter: brightness(0%);
-}.footer-icon-link:hover {
-    img {
-        /* filter: invert(100%); */
-        filter: brightness(0%) invert(100%);
-    }
+    filter: brightness(0) invert(1) brightness(33.3%);
+}
+
+.footer-icon-link:hover img {
+    /* ホバー時に白にする */
+    filter: brightness(0) invert(1);
 }
 
 .footer-icon-link i {
     /* アイコンのサイズを調整 */
-    font-size: 190%;
+    font-size: 240%;
 }
 /* ==========footerここまで========== */
