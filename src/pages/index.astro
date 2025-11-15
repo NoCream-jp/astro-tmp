@@ -1,5 +1,6 @@
 ---
 import PostCard from '@/components/PostCard.astro';
+import ProfileCard from '@/components/ProfileCard.astro';
 import { getCollection } from 'astro:content';
 
 // blog コレクションを取得
@@ -39,15 +40,6 @@ const hasMorePosts = posts.length > 6;
     </head>
 
     <body>
-        <!-- footerで利用。切り抜き用の図形を定義 (通常は body の開始タグ直後などに置く) -->
-        <svg width="0" height="0">
-            <defs>
-            <clipPath id="rounded-triangle-clip" clipPathUnits="objectBoundingBox">
-                <!-- ↓これが角丸三角形のパスデータ -->
-                <path d="M0.1,0 C0.04,0,0,0.04,0,0.1 L0,0.9 C0,0.96,0.04,1,0.1,1 L0.8,0.6 C0.86,0.57,0.86,0.43,0.8,0.4 L0.1,0 Z"></path>
-            </clipPath>
-            </defs>
-        </svg>
 
         <header class="header">
             <div class="header-container">
@@ -76,9 +68,18 @@ const hasMorePosts = posts.length > 6;
         </nav>
 
         <main>
-            <div class="blank"></div>
             <section class="section-profile">
-                <h2 class="section-title">About</h2>
+                <div class="section-title">
+                    <i class="fas fa-user"></i>
+                    <h2 class="section-title-sentence">Profile</h2>
+                </div>
+                <div class="profile-cards-container">
+                    <!-- 作成したコンポーネントを呼び出し、propsを渡す -->
+                    <ProfileCard text="大阪府在住" iconClass="fa-solid fa-location-dot" />
+                    <ProfileCard text="ITパスポート合格" iconClass="fa-solid fa-trophy" />
+                    <ProfileCard text="情報工学系の学部3年生" iconClass="fa-solid fa-address-card" />
+                    <ProfileCard text="webデザイン" iconClass="fa-solid fa-address-card" />
+                </div>
             </section>
             <section class="section-blog">
                 <h2 class="section-title">Blog</h2>

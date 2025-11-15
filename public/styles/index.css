@@ -144,7 +144,7 @@ section {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
     padding: 30px;
-    height: 300px;/* 固定するかどうか決める */
+    /* height: 300px; */
 }
 
 .section-profile {
@@ -157,11 +157,24 @@ section {
 }
 
 .section-title {
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    color: #555;
+    font-size: 150%;
+    padding-right: 1rem;
+}
+
+.section-title-sentence {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 700;
     font-style: normal;
     color: #555;
 }
+
+
 /* ==========sectionここまで========== */
 
 
@@ -221,3 +234,10 @@ section {
     font-size: 240%;
 }
 /* ==========footerここまで========== */
+
+
+/* ==========ProfileCardここから========== */
+.profile-cards-container {
+    max-width: 800px;
+    margin: 0 auto;
+}

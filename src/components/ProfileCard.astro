@@ -1,0 +1,44 @@
+---
+// src/components/ProfileCard.astro
+
+// コンポーネントが受け取るプロパティの型を定義します
+interface Props {
+  text: string;
+  iconClass: string;
+}
+
+// Astro.propsからプロパティを受け取ります
+const { text, iconClass } = Astro.props;
+---
+
+<div class="profile-card">
+  <div class="profile-card-content">
+    <p>{text}</p>
+  </div>
+  <div class="card-icon">
+    <!-- 受け取ったクラスをアイコンに適用します -->
+    <i class:list={[iconClass, "fa-2x"]}></i>
+  </div>
+</div>
+
+<style>
+.profile-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0; /* カード下の余白 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-card-content {
+    /* 文章の右の余白 */
+    padding-right: 2rem;
+  }
+
+  .card-icon {
+    color: #555;
+  }
+</style>
