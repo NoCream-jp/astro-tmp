@@ -50,7 +50,7 @@ const hasMorePosts = posts.length > 6;
                     <a href="/#section-profile" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
                     <a href="/#section-blog" class="header-icon-link" aria-label="ブログ"><i class="fas fa-pen-nib"></i></a>
                     <a href="/#section-works" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-cube"></i></a>
-                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-link"></i></a>
                 </div>
         </header>
 
@@ -60,15 +60,15 @@ const hasMorePosts = posts.length > 6;
 
         <nav class="header-overlay-nav" id="overlay-nav">
             <div class="nav-list">
-                <a href="/" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
-                <a href="/" class="header-icon-link" aria-label="ホーム"><i class="fas fa-pen-nib"></i></a>
-                <a href="/" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-cube"></i></a>
-                <a href="/" class="header-icon-link share" aria-label="共有"><i class="fas fa-share-square"></i></a>
+                <a href="/#section-profile" class="header-icon-link" aria-label="プロフィール"><i class="fas fa-user"></i></a>
+                <a href="/#section-blog" class="header-icon-link" aria-label="ブログ"><i class="fas fa-pen-nib"></i></a>
+                <a href="/#section-works" class="header-icon-link" aria-label="制作物"><i class="fa-solid fa-cube"></i></a>
+                <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-link"></i></a>
             </div>
         </nav>
 
         <main>
-            <section class="section-profile">
+            <section class="section-profile" id="section-profile">
                 <div class="section-title">
                     <i class="fas fa-user"></i>
                     <h2 class="section-title-sentence">Profile</h2>
@@ -81,11 +81,16 @@ const hasMorePosts = posts.length > 6;
                     <ProfileCard text="webデザイン" iconClass="fa-solid fa-address-card" />
                 </div>
             </section>
-            <section class="section-blog">
-                <h2 class="section-title-sentence">Blog</h2>
+            <section class="section-blog" id="section-blog">
+                <div class="section-title">
+                    <i class="fas fa-pen-nib"></i>
+                    <h2 class="section-title-sentence">Blog</h2>
+                </div>
             </section>
-            <section class="section-works">
-                <h2 class="section-title-sentence">Works</h2>
+            <section class="section-works" id="section-works">
+                <div class="section-title">
+                    <i class="fa-solid fa-cube"></i>
+                    <h2 class="section-title-sentence">Works</h2>
             </section>
         </main>
 

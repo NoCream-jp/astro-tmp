@@ -1,68 +1,90 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ========== ハンバーガーメニュー機能 ==========
     const navToggle = document.getElementById('nav-toggle');
     const overlayNav = document.getElementById('overlay-nav');
-    const navIcon = navToggle.querySelector('i');
 
-    navToggle.addEventListener('click', () => {
-        // nav-toggle と overlay-nav に active クラスをトグル
-        navToggle.classList.toggle('active');
-        overlayNav.classList.toggle('active');
+    if (navToggle && overlayNav) {
+        const navIcon = navToggle.querySelector('i');
 
-        // アイコンのクラスを切り替える
-        if (overlayNav.classList.contains('active')) {
-            // メニューが開いたとき
-            navIcon.classList.remove('fa-bars');
-            navIcon.classList.add('fa-arrow-right');
-        } else {
-            // メニューが閉じたとき
-            navIcon.classList.remove('fa-arrow-right');
-            navIcon.classList.add('fa-bars');
-        }
-    });
+        navToggle.addEventListener('click', () => {
+            overlayNav.classList.toggle('active');
 
-    // メニュー内のリンクをクリックしたときにもメニューを閉じる
-    overlayNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            overlayNav.classList.remove('active');
-
-            // アイコンを元の状態に戻す
-            navIcon.classList.remove('fa-arrow-right');
-            navIcon.classList.add('fa-bars');
-        });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const fadeInElements = document.querySelectorAll(".fade-in");
-
-    const handleScroll = () => {
-        fadeInElements.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 120 > 0) {
-                el.classList.add("visible");
+            if (overlayNav.classList.contains('active')) {
+                navIcon.classList.remove('fa-bars');
+                navIcon.classList.add('fa-times'); // 閉じるアイコンとして 'x' (fa-times) を使用
+            } else {
+                navIcon.classList.remove('fa-times');
+                navIcon.classList.add('fa-bars');
             }
         });
-    };
 
-    // 初期チェックとスクロールイベントの登録
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-});
+        overlayNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                overlayNav.classList.remove('active');
+                navIcon.classList.remove('fa-times');
+                navIcon.classList.add('fa-bars');
+            });
+        });
+    }
 
-// 手書き風テキストアニメーション
-document.addEventListener("DOMContentLoaded", () => {
-    const text = "by Minato Hayashi";
-    const container = document.getElementById("handwriting-text");
-    let index = 0;
+    // ========== フェードイン機能 ==========
+    const fadeInElements = document.querySelectorAll(".fade-in");
+    if (fadeInElements.length > 0) {
+        const handleScroll = () => {
+            fadeInElements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 120) { // 条件式を修正
+                    el.classList.add("visible");
+                }
+            });
+        };
 
-    const type = () => {
-        if (index < text.length) {
-            container.textContent += text[index];
-            index++;
-            setTimeout(type, 80); // 1文字ごとに200msの遅延
-        }
-    };
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+    }
 
-    type();
+    // ========== 手書き風テキストアニメーション ==========
+    const handwritingContainer = document.getElementById("handwriting-text");
+    if (handwritingContainer) {
+        const text = "by Minato Hayashi";
+        let index = 0;
+
+        const type = () => {
+            if (index < text.length) {
+                handwritingContainer.textContent += text[index];
+                index++;
+                setTimeout(type, 80);
+            }
+        };
+        type();
+    }
+
+    // ========== URLコピー機能 ==========
+    const shareLinks = document.querySelectorAll('.share');
+    if (shareLinks.length > 0) {
+        shareLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                // URLの # 以降（フラグメント）を除いた部分を取得
+                const url = window.location.origin + window.location.pathname;
+
+                navigator.clipboard.writeText(url).then(() => {
+                    const originalIconHTML = this.innerHTML;
+                    const iconElement = this.querySelector('i');
+                    
+                    if (iconElement) {
+                        iconElement.className = 'fa-solid fa-check'; // アイコンをチェックマークに変更
+                    }
+                    this.style.pointerEvents = 'none';
+
+                    setTimeout(() => {
+                        this.innerHTML = originalIconHTML;
+                        this.style.pointerEvents = 'auto';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('URLのコピーに失敗しました: ', err);
+                });
+            });
+        });
+    }
 });

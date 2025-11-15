@@ -145,6 +145,9 @@ section {
     margin: 30px 40px;
     padding: 30px;
     /* height: 300px; */
+} section[id] {
+    /* ヘッダーの高さ(90px) + 上部の余白(30px) + α */
+    scroll-margin-top: 150px;
 }
 
 .section-profile {

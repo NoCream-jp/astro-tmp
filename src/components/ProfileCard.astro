@@ -26,11 +26,11 @@ const { text, iconClass } = Astro.props;
     background-color: white;
     border-radius: 12px;
     padding: 1.5rem;
-    margin: 1rem 0; /* カード下の余白 */
+    margin: 2rem 0; /* カード下の余白 */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
   }
 
   .profile-card-content {
@@ -38,7 +38,10 @@ const { text, iconClass } = Astro.props;
     padding-right: 2rem;
   }
 
-  .card-icon {
-    color: #555;
+  .card-icon { /* 白抜き処理 */
+    /* color: #555; */
+    color: white;
+    -webkit-text-stroke: 1px #555;
+    text-stroke: 1px #555;
   }
 </style>
