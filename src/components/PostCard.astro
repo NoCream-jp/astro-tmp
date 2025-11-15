@@ -2,37 +2,61 @@
 const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; // isCurrent：表示中ならtrueとなるパラメータ
 ---
 
+
+<!-- <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;"> -->
+<a href={"/blog/" + slug + "/"} class:list={["card-link", {"is-current": isCurrent}]}>
+    <div class="card">
+        <img class="thumbnail" src={thumbnail} alt="thumbnail" />
+        <div class="card-content">
+            <h2>
+                {title}
+            </h2>
+            <div class="bottom-row">
+                <p class="desc">{description}</p>
+                <p class="date">{date}</p>
+            </div>
+        </div>
+    </div>
+</a>
+
 <style>
     .card-link {
         text-decoration: none;
         color: inherit;
         display: block;
+        transition: transform 0.3s ease; /* 浮き上がるアニメーションを滑らかに */
+    }
+
+    .card-link:hover {
+        transform: scale(1.03); /* ホバー時にカードを1.03倍に拡大 */
     }
     
     /* 現在開いているカードのスタイル(基本的に追加の形にする)*/
     .card-link.is-current .card{
         border-left: 4px solid #5e3405;
         background-color: #f3ece8;
-        
     }
 
     .card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 2rem 0; /* カード下の余白 */
         display: flex;
-        align-items: center; /* 画像とテキストエリアの垂直位置を中央揃え */
-        gap: 16px;
-        padding: 20px;
-        min-height: 70px;
-        max-height: 200px;
-        box-sizing: border-box;
-        background-color: #ffffff; /* デフォルトの背景色 */
-        border: 1px solid transparent; /* デフォルトで透明なボーダーを設定 */
-        border-radius: 10px;
-        transition: background-color 0.4s ease, border-color 0.4s ease; /* ホバー時のアニメーション */
+        gap:1rem;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
+        transition: box-shadow 0.2s ease; /* 影の変化も滑らかに */
     }
 
-    .card-link:hover .card {
-        background-color: #ffefe4;
-        border-color: #d0844e; /* ホバー時にボーダーの色だけを変更 */
+    /* .card-link:hover .card {
+        background-color: #aaa;
+    } */
+
+    .card-link:hover .card .thumbnail {
+        /* ホバー時にカラーに戻す */
+        filter: grayscale(0%);
     }
 
     .card .thumbnail {
@@ -41,8 +65,10 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         object-fit: cover;
         border-radius: 8px;
         flex-shrink: 0;
+        filter: grayscale(100%); /* 初期状態を白黒にする */
+        transition: filter 0.2s ease; /* フィルターの変化を滑らかにする */
     }
-    
+
     .card-content {
         display: flex;
         flex-direction: column;
@@ -87,19 +113,3 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         flex-shrink: 0; /* 日付が潰れないようにする */
     }
 </style>
-
-<!-- <a href={"/blog/" + slug + "/"} style="text-decoration: none; color: inherit;"> -->
-<a href={"/blog/" + slug + "/"} class:list={["card-link", {"is-current": isCurrent}]}>
-    <div class="card">
-        <img class="thumbnail" src={thumbnail} alt="thumbnail" />
-        <div class="card-content">
-            <h2>
-                {title}
-            </h2>
-            <div class="bottom-row">
-                <p class="desc">{description}</p>
-                <p class="date">{date}</p>
-            </div>
-        </div>
-    </div>
-</a>

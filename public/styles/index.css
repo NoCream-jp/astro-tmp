@@ -1,5 +1,4 @@
 /* ========== 全体共有スタイルここから ========== */
-
 h2 {
     margin: 0;
 }
@@ -7,14 +6,13 @@ h2 {
 body {
     background-color: #eeeeee;
 }
-
 /* ========== 全体共有スタイルここまで ========== */
 
 
 
 /* ==========headerここから========== */
-
 .header {
+    z-index: 1;
     position: fixed;
     top: 30px;
     left: 30px;
@@ -83,8 +81,7 @@ body {
     position: fixed; /* 画面を基準に位置を固定 */
     display: none;
     align-items: center;
-}
-@media (max-width: 447px) {
+}@media (max-width: 447px) {
     .nav-button {
         display: flex; /* 狭いときのみ表示 */
     }
@@ -124,13 +121,11 @@ body {
 .nav-list .share {
     color: #bbb;
 }
-
 /* ==========headerここまで========== */
 
 
 
-/* ==========sectionここから========== */
-
+/* ====================  sectionここから  ==================== */
 main {
     display: flex;
     flex-direction: column;
@@ -162,6 +157,7 @@ section {
 .section-title {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .section-title i {
@@ -170,15 +166,33 @@ section {
     padding-right: 1rem;
 }
 
+.section-title-left {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content:center;
+}
+
 .section-title-sentence {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 700;
     font-style: normal;
+    font-size: 40px;
     color: #555;
 }
-
-
-/* ==========sectionここまで========== */
+/* =====ProfileCardここから===== */
+.profile-cards-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+/* =====ProfileCardここまで===== */
+/* =====Blogここから===== */
+.post-cards-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+/* =====Blogここまで===== */
+/* ====================  sectionここまで  ==================== */
 
 
 
@@ -239,8 +253,6 @@ section {
 /* ==========footerここまで========== */
 
 
-/* ==========ProfileCardここから========== */
-.profile-cards-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
+
+
+

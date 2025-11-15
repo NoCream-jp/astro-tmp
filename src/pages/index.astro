@@ -70,27 +70,51 @@ const hasMorePosts = posts.length > 6;
         <main>
             <section class="section-profile" id="section-profile">
                 <div class="section-title">
-                    <i class="fas fa-user"></i>
-                    <h2 class="section-title-sentence">Profile</h2>
+                    <div class="section-title-left">
+                        <i class="fas fa-user"></i>
+                        <h2 class="section-title-sentence">Profile</h2>
+                    </div>
+                    <a href="/"><i class="fa-solid fa-expand"></i></a>
                 </div>
                 <div class="profile-cards-container">
                     <!-- 作成したコンポーネントを呼び出し、propsを渡す -->
                     <ProfileCard text="大阪府在住" iconClass="fa-solid fa-location-dot" />
                     <ProfileCard text="ITパスポート合格" iconClass="fa-solid fa-trophy" />
-                    <ProfileCard text="情報工学系の学部3年生" iconClass="fa-solid fa-address-card" />
+                    <ProfileCard text="情報工学系の学部3年生" iconClass="fa-solid fa-graduation-cap" />
                     <ProfileCard text="webデザイン" iconClass="fa-solid fa-address-card" />
                 </div>
             </section>
             <section class="section-blog" id="section-blog">
                 <div class="section-title">
-                    <i class="fas fa-pen-nib"></i>
-                    <h2 class="section-title-sentence">Blog</h2>
+                    <div class="section-title-left">
+                        <i class="fas fa-pen-nib"></i>
+                        <h2 class="section-title-sentence">Blog</h2>
+                    </div>
+                    <a href="/"><i class="fa-solid fa-expand"></i></a>
+                </div>
+                <div class="post-cards-container">
+                    {limitedPosts.map((post: { data: { pubDate: any; title: unknown; description: unknown; thumbnail: unknown; }; slug: unknown; }) => {
+                        // pubDateが存在しない場合は現在の日時を使用する
+                        const displayDate = post.data.pubDate ? post.data.pubDate : new Date();
+                        return (
+                            <PostCard 
+                                title={post.data.title}
+                                description={post.data.description}
+                                date={displayDate.toISOString().split('T')[0]}
+                                slug={post.slug}
+                                thumbnail={post.data.thumbnail}
+                            />
+                        );
+                    })}
                 </div>
             </section>
             <section class="section-works" id="section-works">
                 <div class="section-title">
-                    <i class="fa-solid fa-cube"></i>
-                    <h2 class="section-title-sentence">Works</h2>
+                    <div class="section-title-left">
+                        <i class="fa-solid fa-cube"></i>
+                        <h2 class="section-title-sentence">Works</h2>
+                    </div>
+                    <a href="/"><i class="fa-solid fa-expand"></i></a>
             </section>
         </main>
 
