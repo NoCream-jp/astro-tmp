@@ -30,12 +30,18 @@ const { text, iconClass } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.20);
   }
 
   .profile-card-content {
     /* 文章の右の余白 */
     padding-right: 2rem;
+  }
+
+  .profile-card-content p {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 600;
+    font-style: normal;
   }
 
   .card-icon { /* 白抜き処理 */

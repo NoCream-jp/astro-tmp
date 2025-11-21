@@ -18,7 +18,7 @@ body {
     left: 30px;
     right: 30px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     /* background-color: #ffffff; */
     background-color: rgba(255, 255, 255, 0.8);
     margin: 0; /* position: fixed のため margin は不要に */
@@ -136,7 +136,7 @@ section {
     width: 75vw;
     background-color: #fff;
     border-radius: 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
     padding: 30px;
     /* height: 300px; */
@@ -180,11 +180,43 @@ section {
     font-size: 40px;
     color: #555;
 }
+
+.section-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 要素を右揃えにする */
+}
+
+.section-footer-right button{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: #555;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10); */
+}
+
+.section-footer-right button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; /* アイコンの色を白に */
+}
+
+.section-footer-right i {
+    transform: rotate(-45deg);
+}
+
 /* =====ProfileCardここから===== */
 .profile-cards-container {
     max-width: 800px;
     margin: 0 auto;
 }
+
+
 /* =====ProfileCardここまで===== */
 /* =====Blogここから===== */
 .post-cards-container {
@@ -251,8 +283,3 @@ section {
     font-size: 240%;
 }
 /* ==========footerここまで========== */
-
-
-
-
-
