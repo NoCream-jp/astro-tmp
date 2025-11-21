@@ -21,239 +21,91 @@ const { Content } = await post.render();
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post: { slug: any; }) => ({
-    params: { slug: post.slug },
+      params: { slug: post.slug },
   }));
 }
+
 ---
 
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{post.data.title}</title>
-    <meta name="description" content={post.data.description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/index.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <style is:global>
-      /* Markdownコンテンツ内の画像スタイル */
-      article div img {
-        width: 100%;
-        border-radius: 4px;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <title>{post.data.title}</title>
+        <meta name="description" content={post.data.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DripNotes</title>
+        <link rel="stylesheet" href="/styles/index.css">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@300;400&display=swap"> -->
 
-      body {
-        margin: 0;
-        font-family: "Inter", "Hiragino Sans", sans-serif;
-        background: #fff;
-        color: #222;
-      }
+        <!-- font awesome フォント持ってくる -->
+        <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-      article {
-        max-width: 800px;
-        border-radius: 8px;
-      }
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Oxanium:wght@200..800&family=Tilt+Neon&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    </head>
 
-      /* サムネイル画像 */
-      .thumbnail {
-        display: block;
-        width: 100%;
-        max-height: 350px;
-        object-fit: cover;           /* 親要素を埋めるように調整 */
-        border-radius: 6px;
-        /* 下方向に向かって透明になるグラデーションマスクを適用 */
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5em;
-        text-align: center;
-        color: var(--theme);
-        font-weight: 600;
-        font-size: 2.5rem;
-        text-align: center;
-        font-weight: 700;
-      }
-
-      em {
-        display: block;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 2rem;
-      }
-
-      article div {
-        font-size: 1.30rem;
-        line-height: 1.8;
-      }
-
-      h2, h3 {
-		padding: 20px;
-        color: var(--theme);
-        font-weight: 600;
-      }
-
-      h2 { font-size: 1.8rem; }
-      h3 { font-size: 1.4rem; }
-
-      a {
-        color: var(--theme);
-        text-decoration: none;
-        border-bottom: 1px solid var(--theme);
-        transition: color 0.2s, border-color 0.2s;
-      }
-
-      a:hover {
-        color: #88ddcc;
-        border-color: #88ddcc;
-      }
-
-      pre {
-        background: #f5f5f5;
-        color: #111;
-        padding: 1rem;
-        border-radius: 4px;
-        border: 1px solid #000;
-        overflow-x: auto;
-        font-family: "Courier New", monospace;
-      }
-
-      ul, ol {
-        padding-left: 1.5rem;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-        font-size: 0.95rem;
-      }
-
-      th, td {
-        border: 1px solid #000;
-        padding: 0.5rem 0.75rem;
-      }
-
-      th {
-        background: var(--theme);
-        color: #000;
-      }
-
-		.sub-header{
-			background-color: #ffffff;
-			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-			height: 70px;
-			padding: 10px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		
-		.components-container {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: flex-start; /* 上端揃えにするとレイアウトが安定します */
-			gap: 3vw;
-			/*
-			gap
-			.left-boxのwidth
-			.right-boxのwidth
-			全部合わせて100以内にする。残りはjustify-content:center;が効いてる
-			*/
-		}
-
-		.left-box {
-			width: 60vw;
-		}
-
-		.left-box article {
-			margin-top: 50px;
-			background-color: #f8f3ed;
-		}
-
-		.left-box .thumbnail {
-			margin-bottom: 60px;
-		}
-
-		.right-box {
-			width: 25vw;
-		}
-		
-		.right-box .section-heading {
-			margin-top: 30px;
-		}
-
-		@media (max-width: 680px) {
-			.components-container {
-				flex-direction: column;
-				align-items: center; /* 中央揃えに変更 */
-			}
-			.left-box, .right-box {
-				width: 90vw; /* 画面幅に合わせて幅を調整 */
-			}
-			.right-box {
-				margin-top: 40px;
-				border-top: 1px solid #ddd;
-				padding-top: 40px;
-			}
-		}
-
-	
-	
-    </style>
-  </head>
-
-  <body class="all-blog-view">
-    <header class="sub-header">
-      <a href="/index.html">
-        <button class="nav-button" aria-label="BackToHome">
-          <i class="fas fa-arrow-left"></i>
-          <span class="sr-only">BackToHome</span>
-		  Back to Home
-      </button>
-      </a>
-    </header>
-
-    <div class="components-container">
-      <div class="left-box">
-		<article>
-		  {post.data.thumbnail && (
-			<img
-			  src={post.data.thumbnail}
-			  alt={`サムネイル画像: ${post.data.title}`}
-			  class="thumbnail"
-			/>
-		  )}
-		  <h1>{post.data.title}</h1>
-		  <em>{post.data.date}</em>
-		  <div class="article-cont">
-			<Content />
-		  </div>
-		</article>
-      </div>
-      <div class="right-box">
-        <h2 class="section-heading">All posts</h2>
-        <div class="posts-container">
-          {posts.map((p: { data: { title: unknown; date: unknown; description: unknown; thumbnail: unknown; }; slug: unknown; }) => (
-            <PostCard
-              title={p.data.title}
-              date={p.data.date}
-              description={p.data.description}
-              slug={p.slug}
-              thumbnail={p.data.thumbnail}
-			  isCurrent = {p.slug === slug}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-
-  </body>
-
-  <!-- <script>
-    navIcon.classList.add('fa-arrow-right');
-
-  </script> -->
+    <body>
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="/index.html">
+                        <button class="home-back-button" aria-label="BackToHome">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <div class="blog-header-sentence"><i class="fas fa-pen-nib"></i> Blogs</div>
+                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="blog-section-container">
+                <div class="view-blog-left-box">
+                    <div class="components-container">
+                        <article>
+                            {post.data.thumbnail && (
+                                <img
+                                    src={post.data.thumbnail}
+                                    alt={`サムネイル画像: ${post.data.title}`}
+                                    class="thumbnail"
+                                />
+                            )}
+                            <h1>{post.data.title}</h1>
+                            <em>{post.data.date}</em>
+                            <div class="article-container">
+                                <Content />
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="view-blog-right-box">
+                    <h2 class="section-heading">All posts</h2>
+                    <div class="posts-container">
+                        {posts.map((p: { data: { title: unknown; date: unknown; description: unknown; thumbnail: unknown; }; slug: unknown; }) => (
+                            <PostCard
+                                title={p.data.title}
+                                date={p.data.date}
+                                description={p.data.description}
+                                slug={p.slug}
+                                thumbnail={p.data.thumbnail}
+                                isCurrent = {p.slug === slug}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src="/scripts/indexScript.js" defer></script>
 </html>

@@ -32,7 +32,8 @@ body {
 .header-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* 両端に寄せる */
+    /* justify-content: start; */
+    justify-content: space-between;
     align-items: center; /* 垂直方向中央 */
     height: 100%;
 }
@@ -133,7 +134,7 @@ main {
 }
 
 section {
-    width: 75vw;
+    width: 80vw;
     background-color: #fff;
     border-radius: 40px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -145,7 +146,7 @@ section {
     scroll-margin-top: 150px;
 }
 
-.section-profile {
+.profile-section {
     /*
         なぜか天地30 横40のうち 天地だけ top150 bottom30 扱いになる
         おそらく二重に指定していると、marginは各箇所の最大値をとる
@@ -283,3 +284,79 @@ section {
     font-size: 240%;
 }
 /* ==========footerここまで========== */
+
+
+
+/* ===========================================*/
+/* ==========[slug].astro固有スタイル==========*/
+
+.header .home-back-button {
+    border-radius: 50%;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: #555;
+    background-color: inherit;
+    border: none;
+    width: 50px;
+    height: 50px;
+}
+
+.blog-header-sentence{
+
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    color: #555;
+}
+
+.header .home-back-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+article img {
+    width: 100%;
+}
+
+article .thumbnail {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 35px;
+    mask-image: linear-gradient(to bottom, black -0%, transparent 100%);
+}
+
+.blog-section-container {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    max-width: 100%;
+    gap: 5vw;
+}
+
+.view-blog-left-box {
+    width: 55vw;
+}
+
+.view-blog-right-box {
+    width: 30vw;
+}
+
+@media (max-width: 800px) {
+    .blog-section-container {
+        flex-direction: column;
+        /* スマホ表示ではコンテナ自体の幅を調整 */
+        width: 85vw;
+    }
+    .view-blog-left-box {
+        width: 100%; /* 親要素(90vw)に合わせる */
+    }
+    .view-blog-right-box {
+        width: 100%; /* 親要素(90vw)に合わせる */
+    }
+}

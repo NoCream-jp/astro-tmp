@@ -113,6 +113,9 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         color: #888;
         margin: 0;
         white-space: nowrap;
-        flex-shrink: 0; /* 日付が潰れないようにする */
+        /* flex-shrink: 0; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0; /* はみ出し防止 */
     }
 </style>
