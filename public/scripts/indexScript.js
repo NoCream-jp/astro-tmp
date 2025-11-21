@@ -87,4 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ========== ページトップへ戻るボタンの処理 ==========
+    const pageTopBtn = document.getElementById('page-top-btn');
+
+    if (pageTopBtn) {
+        window.addEventListener('scroll', () => {
+            // 300px以上スクロールしたら .show クラスを追加して表示
+            if (window.scrollY > 150) {
+                pageTopBtn.classList.add('show');
+            } else {
+                pageTopBtn.classList.remove('show');
+            }
+        });
+
+        pageTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // ページ最上部へスムーズにスクロール
+        });
+    }
 });

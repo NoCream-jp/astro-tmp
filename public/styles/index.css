@@ -19,8 +19,7 @@ body {
     right: 30px;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    /* background-color: #ffffff; */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.75);
     margin: 0; /* position: fixed のため margin は不要に */
     height: 90px;
     border-radius: 70px;
@@ -140,7 +139,6 @@ section {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin: 30px 40px;
     padding: 30px;
-    /* height: 300px; */
 } section[id] {
     /* ヘッダーの高さ(90px) + 上部の余白(30px) + α */
     scroll-margin-top: 150px;
@@ -258,7 +256,7 @@ section {
     height: 80px; /* 高さ */
     border-radius: 50%; /* 円形にする */
     transition: background-color 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(5px);
 }.footer-icon-link:hover {
     background-color: rgba(0, 0, 0, 0.5);
@@ -325,26 +323,37 @@ article img {
 article .thumbnail {
     display: block;
     width: 100%;
+    max-height: 450px;
     object-fit: cover;
     border-radius: 35px;
-    mask-image: linear-gradient(to bottom, black -0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black -0%, transparent 90%);
 }
 
 .blog-section-container {
-    margin-top: 150px;
+    margin: 150px 0;
     display: flex;
     flex-direction: row;
-    width: 75vw;
-    max-width: 100%;
-    gap: 5vw;
+
+    gap: clamp(10px, 4vw, 25px);
+
 }
 
 .view-blog-left-box {
-    width: 55vw;
+    width: 60vw;
+
+    border-radius: 35px;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .view-blog-right-box {
-    width: 30vw;
+    width: 20vw;
+
+    border-radius: 35px;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 800px) {
@@ -352,11 +361,57 @@ article .thumbnail {
         flex-direction: column;
         /* スマホ表示ではコンテナ自体の幅を調整 */
         width: 85vw;
+        align-items:center;
     }
     .view-blog-left-box {
-        width: 100%; /* 親要素(90vw)に合わせる */
+        width: 100%;
     }
     .view-blog-right-box {
-        width: 100%; /* 親要素(90vw)に合わせる */
+        width: 100%;
     }
+}
+
+/* ========== 記事(.md)内の画像スタイル ========== */
+article img:not(.thumbnail) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 3rem auto;
+    border-radius: 35px;
+    /* -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+    mask-image: radial-gradient(circle, black 70%, transparent 100%); */
+}
+
+
+/* ==========[slug].astro固有スタイルここまで==========*/
+/* ==================================================*/
+
+
+.page-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.35); /* 透明度を上げてすりガラス効果を強調 */
+    color: #555;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+.page-top-btn.show {
+    opacity: 1;
+    visibility: visible;
 }

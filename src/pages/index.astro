@@ -113,10 +113,11 @@ const hasMorePosts = posts.length > 6;
                 </div>
                 <div class="section-footer">
                     <div class="section-footer-right">
-                        <a href="/profile"><button>show-more <i class="fa-solid fa-arrow-right"></i></button></a>
+                        <a href={latestPostUrl}><button>show-more <i class="fa-solid fa-arrow-right"></i></button></a>
                     </div>
                 </div>
             </section>
+
             <section class="works-section" id="works-section">
                 <div class="section-title">
                     <div class="section-title-left">
@@ -126,7 +127,7 @@ const hasMorePosts = posts.length > 6;
                 </div>
                 <div class="section-footer">
                     <div class="section-footer-right">
-                        <a href="/profile"><button>show-more <i class="fa-solid fa-arrow-right"></i></button></a>
+                        <a href="/"><button>show-more <i class="fa-solid fa-arrow-right"></i></button></a>
                     </div>
                 </div>
             </section>
@@ -141,6 +142,10 @@ const hasMorePosts = posts.length > 6;
                 <a href="https://web.wakayama-u.ac.jp/~kuze/lab/jp/index.html" class="footer-icon-link" aria-label="Adaptive-Network-lab"><img src="/images/Adaptive-Network-Laboratory-logo.png" alt="アダプティブネットワーク研究室ロゴ"></a>
             </div>
         </footer>
+
+        <button id="page-top-btn" class="page-top-btn" aria-label="ページトップへ戻る">
+            <i class="fa-solid fa-caret-up"></i>
+        </button>
 
         <script src="/scripts/indexScript.js" defer></script>
     </body>
