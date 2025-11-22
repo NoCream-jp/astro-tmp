@@ -105,6 +105,7 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: 70%; /* 幅の最大値を70%に制限 */
         min-width: 0; /* はみ出し防止 */
     }
     
@@ -116,6 +117,6 @@ const { title, date, description, slug, thumbnail, isCurrent } = Astro.props; //
         /* flex-shrink: 0; */
         overflow: hidden;
         text-overflow: ellipsis;
-        min-width: 0; /* はみ出し防止 */
+        min-width: 90px; /* 常に日付は全体が見えるように調整 */
     }
 </style>
