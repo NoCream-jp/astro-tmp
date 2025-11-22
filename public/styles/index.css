@@ -57,13 +57,16 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
+    transition: transform 0.3s ease;
     /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .header-icon-link:hover {
-    /* transition: background-color 0.3s ease, color 0.3s ease; */
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff; /* アイコンの色を白に */
+    /* background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; */
+    transform: scale(1.1);
+
 }
 
 .nav-button {
@@ -187,6 +190,8 @@ section {
 }
 
 .section-footer-right button{
+    width: 50px;
+    height: 50px;
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -194,20 +199,18 @@ section {
     color: #555;
     background-color: #fff;
     border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10); */
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
+    transition: transform 0.3s ease;
 }
 
 .section-footer-right button:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff; /* アイコンの色を白に */
+    /* background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; */
+    transform: scale(1.1);
 }
 
-.section-footer-right i {
-    transform: rotate(-45deg);
-}
 
 /* =====ProfileCardここから===== */
 .profile-cards-container {
@@ -255,12 +258,12 @@ section {
     width: 80px; /* 幅 */
     height: 80px; /* 高さ */
     border-radius: 50%; /* 円形にする */
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
     backdrop-filter: blur(5px);
 }.footer-icon-link:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff; /* アイコンの色を白に */
+    /* color: #fff; */
+    transform: scale(1.06);
 }
 
 .footer-icon-link img {
@@ -274,7 +277,7 @@ section {
 
 .footer-icon-link:hover img {
     /* ホバー時に白にする */
-    filter: brightness(0) invert(1);
+    /* filter: brightness(0) invert(1); */
 }
 
 .footer-icon-link i {
@@ -311,10 +314,15 @@ section {
     color: #555;
 }
 
+.header .home-back-button {
+
+}
+
 .header .home-back-button:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    /* background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; */
+    transform: scale(1.06);
 }
 
 article img {
@@ -404,14 +412,20 @@ article img:not(.thumbnail) {
     align-items: center;
     justify-content: center;
     /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
     z-index: 10;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    transition: background-color 0.3s ease-in-out;
+    transition: transform 0.3s ease;
     backdrop-filter: blur(5px);
 }
+
+.page-top-btn:hover {
+    /* background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; */
+    transform: scale(1.1);
+}
+
 .page-top-btn.show {
     opacity: 1;
     visibility: visible;
