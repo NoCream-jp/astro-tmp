@@ -220,12 +220,14 @@ section {
 
 
 /* =====ProfileCardここまで===== */
-/* =====Blogここから===== */
+
+/* =====blog-sectionここから===== */
 .post-cards-container {
     max-width: 800px;
     margin: 0 auto;
 }
-/* =====Blogここまで===== */
+/* =====blog-sectionここまで===== */
+
 /* ====================  sectionここまで  ==================== */
 
 
@@ -275,16 +277,52 @@ section {
     filter: brightness(0) invert(1) brightness(33.3%);
 }
 
-.footer-icon-link:hover img {
-    /* ホバー時に白にする */
-    /* filter: brightness(0) invert(1); */
-}
-
 .footer-icon-link i {
     /* アイコンのサイズを調整 */
     font-size: 240%;
 }
 /* ==========footerここまで========== */
+
+
+
+/* ==========pagetopボタンここから==========*/
+.page-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.35); /* 透明度を上げてすりガラス効果を強調 */
+    color: #555;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.page-top-btn:hover {
+    /* background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; */
+    transform: scale(1.1);
+}
+
+.page-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+/* ==========pagetopボタンここまで==========*/
+
+
 
 
 
@@ -312,10 +350,6 @@ section {
     font-style: normal;
     font-size: 30px;
     color: #555;
-}
-
-.header .home-back-button {
-
 }
 
 .header .home-back-button:hover {
@@ -391,42 +425,95 @@ article img:not(.thumbnail) {
     mask-image: radial-gradient(circle, black 70%, transparent 100%); */
 }
 
-
 /* ==========[slug].astro固有スタイルここまで==========*/
 /* ==================================================*/
 
 
-.page-top-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.35); /* 透明度を上げてすりガラス効果を強調 */
-    color: #555;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
+
+
+/* ==================================================*/
+/* ==========profile.astro固有スタイルここから==========*/
+.profile-tabs-container * {
+    box-sizing: border-box;
+}
+
+.profile-tabs-container {
+    width: 100%; /* clampであとから調整 */
+    max-width: 1000px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    margin: 150px auto;
+
+    /* カード全体にスタイルを適用 */
+    background-color: #fff; /* 背景色を白に設定 */
+    border-radius: 30px; /* 角を丸める */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 全体に影をつける */
+}
+
+.profile-tabs-list {
+    margin-left: 20px;
+    background-color: none;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.3s ease;
-    backdrop-filter: blur(5px);
+    justify-content: flex-start; /* ボタンを左寄せにする */
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.page-top-btn:hover {
-    /* background-color: rgba(0, 0, 0, 0.5);
-    color: #fff; */
-    transform: scale(1.1);
+.profile-tab-trigger {
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    margin: 10px;
+    font-family: inherit; /* 親要素のフォントを継承する */
+    color: #62626a;
 }
 
-.page-top-btn.show {
-    opacity: 1;
-    visibility: visible;
+.profile-tab-trigger.header-icon-link {
+    color: white; /* アイコンの色を白に */
+    -webkit-text-stroke: 1px #555; /* 縁取り（Safariなど） */
+    font-size: 140%;
 }
+
+.profile-tab-trigger.header-icon-link.active {
+    color: white; /* アイコンの色を白に */
+    -webkit-text-stroke: 1px #555; /* 縁取り（Safariなど） */
+    box-shadow: none;
+}
+.profile-tab-trigger.active {
+    background-color: #fff; /* 中身と同じ色 */
+    color: #09090b;
+    font-weight: 600;
+    z-index: 2; /* 重なり順を上へ */
+}
+.profile-tab-trigger.active:hover {
+    transform: scale(1);
+    cursor: default;
+}
+
+
+/* --- コンテンツ部分 --- */
+.profile-tab-content {
+    display: none; /* デフォルト非表示 */
+    background-color: transparent; /* 親の背景色を継承 */
+
+    padding: 24px;
+
+    /* タブより下（z-index小）だが、相対位置で重なりを制御 */
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.profile-tab-content.active {
+    display: block;
+    /* あると分かれて表示されてしまう */
+    /* animation: tabFadeIn 0.2s ease-out; */
+}
+
+@keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ==========profile.astro固有スタイルここまで==========*/
+/* ==================================================*/

@@ -106,3 +106,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+/* ========= Tab ============== */
+function setupTabs() {
+    const triggers = document.querySelectorAll('.profile-tab-trigger');
+    const contents = document.querySelectorAll('.profile-tab-content');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        // 1. データ属性からターゲットIDを取得
+        const targetId = trigger.getAttribute('data-tab');
+
+        // 2. すべてのタブと中身から active クラスを削除
+        triggers.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // 3. クリックされたタブと、対応する中身に active クラスを追加
+        trigger.classList.add('active');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // ページ読み込み時、またはAstroのView Transitions遷移時に実行
+  setupTabs();
+  document.addEventListener('astro:page-load', setupTabs);
+
+  /* ============================= */

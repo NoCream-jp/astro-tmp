@@ -1,3 +1,7 @@
+---
+// このファイルにはサーバーサイドのロジックがないため、フロントマターは空です。
+---
+
 <html lang="ja">
 
     <head>
@@ -18,35 +22,64 @@
 
     <body>
         <header class="header">
-            <a href="/index.html">
-                <button class="nav-button" aria-label="BackToHome">
-                  <i class="fas fa-arrow-left"></i>
-                  <span class="sr-only">BackToHome</span>
-                  Back to Home
-              </button>
-              </a>
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="/index.html" class="header-icon-link">
+                        <button class="home-back-button" aria-label="BackToHome">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <div class="blog-header-sentence"><i class="fas fa-user"></i> Profile</div>
+                    <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-link"></i></a>
+                </div>
+            </div>
         </header>
-        <div class="profile-header-container">
-            <h1>Profile</h1>
-            <img src="/images/heroimg.jpeg" alt="" class="profile-img">
-        </div>
-        <div class="profile-contents-container">
-            <div class="profile-item">
-                <div class="profile-item-label">名前 my name</div>
-                <div class="profile-item-value">Minato Hayashi</div>
-            </div>
-            <div class="profile-item">
-                <div class="profile-item-label">取得資格 learnings</div>
-                <div class="profile-item-value">ITパスポート、普通自動車運転免許、基本情報技術者試験、応用情報技術者試験</div>
-            </div>
-            <div class="profile-item">
-                <div class="profile-item-label">趣味 favorites</div>
-                <div class="profile-item-value">音楽鑑賞、映画鑑賞、食べること、コーヒーを飲むこと</div>
-            </div>
-            <div class="profile-item">
-                <div class="profile-item-label">一言 comment</div>
-                <div class="profile-item-value"></div>
-        </div>
-    </body>
 
+       <main>
+            <div class="profile-tabs-container">
+                <div class="profile-tabs-list">
+                    <button class="profile-tab-trigger header-icon-link active" data-tab="profile-tab-overview"><i class="fa-solid fa-user"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-achievement"><i class="fa-solid fa-trophy"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-study"><i class="fa-solid fa-graduation-cap"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
+                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
+                </div>
+
+                <div class="profile-tab-content active" id="profile-tab-overview">
+                    <!-- overview content -->
+                    <p>status</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-achievement">
+                    <!-- achievement content -->
+                     <p>achivement aria</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-study">
+                    <!-- study content -->
+                     <p>what im learnig</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-favorite">
+                    <!-- study content -->
+                     <p>favorite</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-favorite">
+                    <!-- study content -->
+                     <p>favorite</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-favorite">
+                    <!-- study content -->
+                     <p>favorite</p>
+                </div>
+                <div class="profile-tab-content" id="profile-tab-favorite">
+                    <!-- study content -->
+                     <p>favorite</p>
+                </div>
+            </div>
+
+       </main>
+        <script src="/scripts/indexScript.js" defer></script>
+    </body>
 </html>
