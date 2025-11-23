@@ -58,8 +58,7 @@ body {
     height: 50px;
     border-radius: 50%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.14);
-    transition: transform 0.3s ease;
-    /* transition: background-color 0.3s ease, color 0.3s ease; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease 0.15s; /* 影の変化に0.15秒の遅延を追加 */
 }
 
 .header-icon-link:hover {
@@ -438,11 +437,10 @@ article img:not(.thumbnail) {
 }
 
 .profile-tabs-container {
-    width: 100%; /* clampであとから調整 */
+    width: 90%; /* clampであとから調整 */
     max-width: 1000px;
     font-family: "M PLUS Rounded 1c", sans-serif;
     margin: 150px auto;
-
     /* カード全体にスタイルを適用 */
     background-color: #fff; /* 背景色を白に設定 */
     border-radius: 30px; /* 角を丸める */
@@ -483,6 +481,8 @@ article img:not(.thumbnail) {
 .profile-tab-trigger.active {
     background-color: #fff; /* 中身と同じ色 */
     color: #09090b;
+    transition: box-shadow 0s;
+    transition-delay: 0s; /* アクティブになる際は遅延なく即座に変化 */
     font-weight: 600;
     z-index: 2; /* 重なり順を上へ */
 }
