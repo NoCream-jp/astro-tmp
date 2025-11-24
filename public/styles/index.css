@@ -483,7 +483,6 @@ article img:not(.thumbnail) {
     transition: box-shadow 0s;
     transition-delay: 0s; /* アクティブになる際は遅延なく即座に変化 */
     font-weight: 600;
-    z-index: 2; /* 重なり順を上へ */
 }
 .profile-tab-trigger.active:hover {
     transform: scale(1);
@@ -500,7 +499,6 @@ article img:not(.thumbnail) {
 
     /* タブより下（z-index小）だが、相対位置で重なりを制御 */
     position: relative;
-    z-index: 1;
     margin-top: 0;
 }
 
