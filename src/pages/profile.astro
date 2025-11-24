@@ -1,5 +1,31 @@
 ---
-// このファイルにはサーバーサイドのロジックがないため、フロントマターは空です。
+import ProfileCard from '@/components/ProfileCard.astro';
+
+// 1. 表示したい全てのプロフィールカードのデータを配列として定義
+const allProfileCards = [
+  { text: '関西在住', iconClass: 'fa-solid fa-location-dot' },
+  { text: '応用情報技術者試験(IPA)合格', iconClass: 'fa-solid fa-trophy' },
+  { text: '基本情報技術者試験(IPA)合格', iconClass: 'fa-solid fa-trophy' },
+  { text: 'ITパスポート試験(IPA)合格', iconClass: 'fa-solid fa-trophy' },
+  { text: '情報工学系の学部3年生', iconClass: 'fa-solid fa-graduation-cap' },
+  { text: 'コーヒーがないと不健康になります', iconClass: 'fa-solid fa-heart' },
+  { text: 'ネットワーク、機械学習分野について勉強中', iconClass: 'fa-solid fa-graduation-cap' },
+  { text: '個人サイトを鋭意制作中', iconClass: 'fa-solid fa-graduation-cap' },
+  { text: '和歌山大学に通っています', iconClass: 'fa-solid fa-location-dot' },
+];
+
+// 2. カードデータをアイコンクラスごとにグループ化する
+const groupedCards = allProfileCards.reduce((acc, card) => {
+  const key = card.iconClass;
+  if (!acc[key]) {
+    acc[key] = [];
+  }
+  acc[key].push(card);
+  return acc;
+}, {} as Record<string, typeof allProfileCards>);
+
+// 3. グループのキー（アイコンクラス）のリストを取得
+const iconGroups = Object.keys(groupedCards);
 ---
 
 <html lang="ja">
@@ -31,7 +57,7 @@
                     </a>
                 </div>
                 <div class="header-right">
-                    <div class="blog-header-sentence"><i class="fas fa-user"></i> Profile</div>
+                    <div class="header-sentence"><i class="fas fa-user"></i> Profile</div>
                     <a href="/" class="header-icon-link share" aria-label="共有"><i class="fa-solid fa-link"></i></a>
                 </div>
             </div>
@@ -40,43 +66,26 @@
        <main>
             <div class="profile-tabs-container">
                 <div class="profile-tabs-list">
-                    <button class="profile-tab-trigger header-icon-link active" data-tab="profile-tab-overview"><i class="fa-solid fa-user"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-achievement"><i class="fa-solid fa-trophy"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-study"><i class="fa-solid fa-graduation-cap"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
-                    <button class="profile-tab-trigger header-icon-link" data-tab="profile-tab-favorite"><i class="fa-solid fa-heart"></i></button>
+                    <!-- 4. アイコンのリストを元にタブボタンを動的に生成 -->
+                    {iconGroups.map((iconClass, index) => (
+                        <button
+                            class:list={["profile-tab-trigger", "header-icon-link", { active: index === 0 }]}
+                            data-tab={`profile-tab-${iconClass.replace(/\s+/g, '-')}`}
+                        >
+                            <i class={iconClass}></i>
+                        </button>
+                    ))}
                 </div>
 
-                <div class="profile-tab-content active" id="profile-tab-overview">
-                    <!-- overview content -->
-                    <p>status</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-achievement">
-                    <!-- achievement content -->
-                     <p>achivement aria</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-study">
-                    <!-- study content -->
-                     <p>what im learnig</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-favorite">
-                    <!-- study content -->
-                     <p>favorite</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-favorite">
-                    <!-- study content -->
-                     <p>favorite</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-favorite">
-                    <!-- study content -->
-                     <p>favorite</p>
-                </div>
-                <div class="profile-tab-content" id="profile-tab-favorite">
-                    <!-- study content -->
-                     <p>favorite</p>
-                </div>
+                <!-- 5. グループ化されたデータを元にタブコンテンツとカードを動的に生成 -->
+                {Object.entries(groupedCards).map(([iconClass, cards], index) => (
+                    <div
+                        class:list={["profile-tab-content", { active: index === 0 }]}
+                        id={`profile-tab-${iconClass.replace(/\s+/g, '-')}`}
+                    >
+                        {cards.map(card => <ProfileCard text={card.text} iconClass={card.iconClass} />)}
+                    </div>
+                ))}
             </div>
 
        </main>

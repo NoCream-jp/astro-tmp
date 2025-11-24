@@ -123,6 +123,14 @@ body {
 .nav-list .share {
     color: #bbb;
 }
+
+.header-sentence{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.7rem;
+    color: #555;
+}
 /* ==========headerここまで========== */
 
 
@@ -342,15 +350,6 @@ section {
     height: 50px;
 }
 
-.blog-header-sentence{
-
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 30px;
-    color: #555;
-}
-
 .header .home-back-button:hover {
     cursor: pointer;
     /* background-color: rgba(0, 0, 0, 0.5);
@@ -448,7 +447,7 @@ article img:not(.thumbnail) {
 }
 
 .profile-tabs-list {
-    margin-left: 20px;
+    margin: 0 20px;
     background-color: none;
     display: flex;
     flex-direction: row;
