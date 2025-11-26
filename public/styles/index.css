@@ -468,13 +468,13 @@ article img:not(.thumbnail) {
 
 .profile-tab-trigger.header-icon-link {
     color: white; /* アイコンの色を白に */
-    -webkit-text-stroke: 1px #555; /* 縁取り（Safariなど） */
+    -webkit-text-stroke: 1.5px #888; /* 縁取り（Safariなど） */
     font-size: 140%;
 }
 
 .profile-tab-trigger.header-icon-link.active {
     color: white; /* アイコンの色を白に */
-    -webkit-text-stroke: 1px #555; /* 縁取り（Safariなど） */
+    -webkit-text-stroke: 1.5px #888; /* 縁取り（Safariなど） */
     box-shadow: none;
 }
 .profile-tab-trigger.active {
